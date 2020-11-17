@@ -1,0 +1,71 @@
+body {
+  margin-top: 100px;
+  margin-left: 50px;
+  margin-right: 50px;
+  background-color: black;
+  scroll-behavior: smooth;
+  height: 100%;
+
+}
+
+
+pre {
+    color: white;
+    margin-left: 50px;
+    font-size: 12px;
+    animation: changecolor 2s 3
+}
+p > strong {
+    color: rgba(237, 132, 19, 0.995);
+    cursor: pointer;
+}
+p {
+  color: white;
+}
+
+@keyframes changecolor {
+    0% { color: white;  }
+    20% { color: rgb(10, 255, 10); transform: scale(1.015, 1.015) }
+}
+
+#terminal > p {
+    color:rgb(1, 244, 54);
+}
+
+#terminal {
+  border: none;
+  background: transparent;
+}
+#cursor {
+  font-size: 30px;
+}
+
+.terminal-text {
+  font-size: 20px;
+  padding-right: 20px;
+}
+#terminal-text-active:after {
+  content: "";
+  width: 20px;
+  height: 2px;
+  background: rgb(30, 255, 0);
+  opacity: 0;
+  display: inline-block;
+  animation: blink 1s linear infinite alternate;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.top{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: start;
+}
