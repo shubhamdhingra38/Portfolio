@@ -84,4 +84,6 @@ p > a {
 input {
   background: transparent;
   border: none;
+  outline: none;
+
 }

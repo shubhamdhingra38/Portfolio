@@ -5,6 +5,8 @@ var i = 0
 
 let directory = mainDirectory
 
+
+
 let pythonClassBody = `
 class Person:
     def __init__(self, firstName, lastName, age, location, skills, contact):
@@ -166,6 +168,7 @@ function createNewLine(){
     if(terminal.lastElementChild)
         terminal.lastElementChild.id = ''
     var para = document.createElement("p")
+    console.log(para)
     para.classList = ['terminal-text']
     para.id = 'terminal-text-active'
     if(pythonActive)
@@ -176,79 +179,87 @@ function createNewLine(){
     $(document).scrollTop($(document).height()); 
 
 }
+$(document).ready(() => {
+
+    $('#terminal-text-active').click(function(e){
+        $(this).focus();
+        alert('clicked')
+    });
 
 
-document.onkeydown = function(evt) {
-    evt = evt || window.event
-    // console.log(evt)
-    let key = evt.key
-    // console.log(terminal.lastElementChild)
-    if(key.length == 1){
-        if(evt.code == 'Space')
-            terminal.lastElementChild.textContent += '\xa0'
-        else
-            terminal.lastElementChild.textContent += evt.key
-    }
-    else if(key == 'Enter'){
-        let validCommand = true
-        if(pythonActive){
-            let enteredText = terminal.lastElementChild.textContent.slice(4)
-            if(enteredText == "exit"){
-                pythonActive = false
-                // validCommand = true
-            }
-            validCommand = false
-            // alert(enteredText)
+    document.onkeydown = function(evt) {
+        evt = evt || window.event
+        console.log(evt)
+        let key = evt.key
+        // console.log(terminal.lastElementChild)
+        if(key.length == 1){
+            if(evt.code == 'Space')
+                terminal.lastElementChild.textContent += '\xa0'
+            else
+                terminal.lastElementChild.textContent += evt.key
         }
-        else{
-            let enteredText = terminal.lastElementChild.textContent.slice(2)
-            enteredText = enteredText.trimRight()
-            console.log(enteredText)
-            if(enteredText == "python" || enteredText == "python3"){
-                python.call()
-            }
-            else if(enteredText == "ls" || enteredText == "dir"){
-                ls.call()
-            }
-            else if(enteredText == "help"){
-                help.call()
-            }
-            else if(enteredText == "clear"){
-                clear.call()
-            }
-            else if(enteredText.startsWith("cd")){
-                if(enteredText.split('\xa0').length == 2){
-                    let dir = enteredText.split('\xa0')[1];
-                    cd.call(dir)
+        else if(key == 'Enter'){
+            let validCommand = true
+            if(pythonActive){
+                let enteredText = terminal.lastElementChild.textContent.slice(4)
+                if(enteredText == "exit"){
+                    pythonActive = false
+                    // validCommand = true
                 }
-                else //reset to home dir
-                    cd.call()
-            }
-            else if(enteredText.startsWith("cat")){
-                if(enteredText.split('\xa0').length == 2){
-                    let fName = enteredText.split('\xa0')[1]  
-                    cat.call(fName)
-                }
-                else{
-                    cat.call()
-                }
-            }
-            else if(enteredText.length != 0){
-                invalid.call(enteredText)
+                validCommand = false
+                // alert(enteredText)
             }
             else{
-                validCommand = false
+                let enteredText = terminal.lastElementChild.textContent.slice(2)
+                enteredText = enteredText.trimRight()
+                console.log(enteredText)
+                if(enteredText == "python" || enteredText == "python3"){
+                    python.call()
+                }
+                else if(enteredText == "ls" || enteredText == "dir"){
+                    ls.call()
+                }
+                else if(enteredText == "help"){
+                    help.call()
+                }
+                else if(enteredText == "clear"){
+                    clear.call()
+                }
+                else if(enteredText.startsWith("cd")){
+                    if(enteredText.split('\xa0').length == 2){
+                        let dir = enteredText.split('\xa0')[1];
+                        cd.call(dir)
+                    }
+                    else //reset to home dir
+                        cd.call()
+                }
+                else if(enteredText.startsWith("cat")){
+                    if(enteredText.split('\xa0').length == 2){
+                        let fName = enteredText.split('\xa0')[1]  
+                        cat.call(fName)
+                    }
+                    else{
+                        cat.call()
+                    }
+                }
+                else if(enteredText.length != 0){
+                    invalid.call(enteredText)
+                }
+                else{
+                    validCommand = false
+                }
             }
+            if(!validCommand)
+                createNewLine()
         }
-        if(!validCommand)
-            createNewLine()
+        else if(evt.code == 'Backspace'){
+            if((!pythonActive && terminal.lastElementChild.innerText.length != 2) || (pythonActive && terminal.lastElementChild.innerText.length != 4)){
+                terminal.lastElementChild.textContent = terminal.lastElementChild.innerText.slice(0, -1)
+              }
+        }
     }
-    else if(evt.code == 'Backspace'){
-        if((!pythonActive && terminal.lastElementChild.innerText.length != 2) || (pythonActive && terminal.lastElementChild.innerText.length != 4)){
-            terminal.lastElementChild.textContent = terminal.lastElementChild.innerText.slice(0, -1)
-          }
-    }
-}
+    
+})
 
 function showHelp(){
     terminal.lastElementChild.innerText += '\nHere is a list of available commands:\n'
@@ -258,3 +269,12 @@ function showHelp(){
 }
 
 
+
+// $(document).ready(function() {
+//     $('#terminal').click(function(e){
+//         $(this).focus();
+//     });
+//     $('#button').click(function(e) {
+//         $('#field').trigger('click');
+//     });
+// });
