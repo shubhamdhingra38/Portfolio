@@ -12,6 +12,10 @@ p > i{
   font-size: 13px
 }
 
+.terminal-text{
+  white-space: pre-wrap;
+}
+
 
 pre {
     color: white;
