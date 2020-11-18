@@ -2,10 +2,14 @@ body {
   margin-top: 100px;
   margin-left: 50px;
   margin-right: 50px;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.849);
   scroll-behavior: smooth;
   height: 100%;
-
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-size: 19px;
+}
+p > i{
+  font-size: 13px
 }
 
 
@@ -51,9 +55,12 @@ p {
   background: rgb(30, 255, 0);
   opacity: 0;
   display: inline-block;
-  animation: blink 1s linear infinite alternate;
+  animation: blink 0.5s linear infinite alternate;
 }
-
+p > a {
+  color: rgb(17, 255, 152);
+  text-decoration: none;
+}
 @keyframes blink {
   50% {
     opacity: 0;
