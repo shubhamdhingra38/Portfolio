@@ -80,3 +80,8 @@ p > a {
     flex-direction: row;
     justify-content: start;
 }
+
+input {
+  background: transparent;
+  border: none;
+}
