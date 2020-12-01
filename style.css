@@ -8,42 +8,57 @@ body {
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
   font-size: 19px;
 }
-p > i{
-  font-size: 13px
+
+p > i {
+  font-size: 13px;
 }
 
-.terminal-text{
+.terminal-text {
   white-space: pre-wrap;
+  color: green;
 }
-
 
 pre {
-    color: white;
-    margin-left: 50px;
-    font-size: 12px;
-    animation: changecolor 2s 3
+  color: white;
+  font-weight: bold;
+  margin-left: 50px;
+  font-size: 12px;
+  animation: changecolor 2s infinite;
+  text-shadow: 0 0 2px #00cc00, 0 0 5px #00cc00;
+
 }
 p > strong {
-    color: rgba(237, 132, 19, 0.995);
-    cursor: pointer;
+  color: rgba(237, 132, 19, 0.995);
+  cursor: pointer;
 }
 p {
   color: white;
 }
 
 @keyframes changecolor {
-    0% { color: white;  }
-    20% { color: rgb(10, 255, 10); transform: scale(1.015, 1.015) }
+  0% {
+    color: white;
+  }
+  50% {
+    color: rgb(10, 255, 10);
+    text-shadow: 0 0 20px rgba(0,0,0,0.5);
+
+  }
 }
 
 #terminal > p {
-    color:rgb(1, 244, 54);
+  color: rgb(1, 244, 54);
 }
 
 #terminal {
   border: none;
   background: transparent;
 }
+
+.terminal-line {
+  display: flex;
+}
+
 #cursor {
   font-size: 30px;
 }
@@ -74,16 +89,23 @@ p > a {
   }
 }
 
-.top{
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: start;
+.top {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: start;
 }
 
 input {
   background: transparent;
   border: none;
   outline: none;
+  /* background-color: rgb(36, 109, 16); */
+  width: 100%;
+}
 
+.fancy{
+  font-weight: bold;
+  color: rgba(237, 132, 19, 0.995) !important;
+  text-decoration: none;
 }

@@ -73,3 +73,35 @@ let scriptText = `
 def foo():
     print("bar")
 `
+
+
+let pythonClassBody = `
+class Person:
+    def __init__(self, firstName, lastName, age, location, skills, contact):
+        self.firstName = firstName
+        self.lastName = lastName
+        self.age = age
+        self.location = location
+        self.skills = skills
+        self.__contact = contact
+    
+    def __str__(self):
+        return f'{self.firstName} {self.lastName}'
+    
+    def getContactDetails(self):
+        return f'Feel free to reach me out at +91-{self.__contact}'
+    
+    def getLocationDetails(self):
+        return f'I current reside in {location}, India'
+    
+    def getSkills(self):
+        print("Following are my skills")
+        for skill in self.skills:
+            print('•', skill)
+
+#------------------------------------
+import pickle
+shubham = pickle.loads('./myself.pkl')
+
+
+`
