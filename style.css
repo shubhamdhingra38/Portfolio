@@ -67,14 +67,16 @@ p {
   font-size: 20px;
   padding-right: 20px;
 }
+
+
 #terminal-text-active:after {
   content: "";
   width: 20px;
-  height: 2px;
+  height: 10px;
   background: rgb(30, 255, 0);
-  opacity: 0;
-  display: inline-block;
-  animation: blink 0.5s linear infinite alternate;
+  opacity: 1;
+  /* display: inline-block; */
+  animation: blink 0.8s linear infinite alternate;
 }
 p > a {
   color: rgb(17, 255, 152);
@@ -86,6 +88,7 @@ p > a {
   }
   100% {
     opacity: 1;
+  text-shadow: 0 0 2px #00cc00, 0 0 5px #00cc00;
   }
 }
 
@@ -96,10 +99,19 @@ p > a {
   justify-content: start;
 }
 
+.command-text{
+  color: #00cc00 !important;
+  font-size: 20px !important;
+}
+
 input {
-  background: transparent;
+  background: rgba(0, 0, 0, 0);
   border: none;
   outline: none;
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-size: 19px !important;
+  color: #00cc00 !important;
+  caret-color: #00cc00;
   /* background-color: rgb(36, 109, 16); */
   width: 100%;
 }

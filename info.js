@@ -63,6 +63,14 @@ let projectsDirectory = [
     },
 ]
 
+let contactDirectory = [
+    {
+        name: 'LinkedIn',
+        isLink: true,
+        link: "https://www.linkedin.com/in/shubham-dhingra-33372819b/"
+    },
+]
+
 let aboutText = `
 Name: ${info.firstName} ${info.lastName}
 Contact: ${info.contact}

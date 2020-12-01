@@ -56,6 +56,9 @@ class Terminal {
             let dir = textEntered.split(' ')[1]
             this.commands['cd'].call(terminal, dir)
         }
+        else if(textEntered.trim(' ')==''){
+            //allow empty line
+        }
         else{
             this.showInvalid(textEntered)
         }
@@ -65,7 +68,7 @@ class Terminal {
         this.terminal.append(`
         <div class="terminal-line">
             <p class="command-text">>&nbsp;</p>
-            <input style="width: 100%;" id="terminal-text-active" class="terminal-text">
+            <input autocomplete="off" type="text" value="" style="width: 100%;" id="terminal-text-active" class="terminal-text">
         </div>`)
 
 
@@ -179,13 +182,20 @@ let python = new Command("Python shell", function () {
 })
 
 let cd = new Command("Change Directory", function (terminal, dirName) {
-    // terminal.lastElementChild.innerHTML += '\nChange directory'
-    console.log('Changed directory to', dirName)
+    console.log('Changed directory to:', dirName)
     if (dirName == 'projects' || dirName == 'projects/') {
-        // alert('yes')
-        terminal.changeDirectory(dirName, projectsDirectory)
+        terminal.changeDirectory('projects', projectsDirectory)
     }
-
+    else if (dirName == 'contact' || dirName == 'contact/'){
+        terminal.changeDirectory('contact', contactDirectory)
+    }
+    else if (dirName == '' || dirName == '/' || dirName == '~' || dirName == '..') {
+        terminal.changeDirectory('~', mainDirectory)
+    }
+    else{
+        //invalid dir
+        terminal.addLine(`cd: no such file or directory: ${dirName}`)
+    }
 })
 
 
@@ -226,8 +236,10 @@ function inputKeyUp(e) {
     }
 }
 
+
 //jquery stuff
 $(document).ready(() => {
     document.getElementById('terminal-text-active').addEventListener('keyup', inputKeyUp)
+    document.getElementById('terminal-text-active').focus()
 })
 
