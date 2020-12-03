@@ -25,10 +25,6 @@ let mainDirectory = [
         isLink: true
     },
     {    
-        name: 'something',
-        isLink: false
-    }, 
-    {    
         name: 'contact/',
         isLink: true
     },

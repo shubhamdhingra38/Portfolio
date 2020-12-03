@@ -20,7 +20,7 @@ speedLower = 5
 
 var streams = [];
 var fadeInterval = 1.4;
-var symbolSize = 15;
+var symbolSize = 10;
 
 function setup() {
     let cnv = createCanvas(imgWidth, imgHeight)

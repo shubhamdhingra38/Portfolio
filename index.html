@@ -15,6 +15,8 @@
     <link href="https://emoji-css.afeld.me/emoji.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
     <script src="./script.js" defer></script>
+    <link rel="icon" href="static/favicon.ico" type="image/gif" sizes="16x16">
+
 
 </head>
 <body>
@@ -35,7 +37,7 @@
     <div class="textual-info">
         
         <p>
-            Click or type in <strong onclick="showHelp()">"help"</strong> for a list of available commands.
+            Type <strong>"help"</strong> for a list of available commands.
         </p>
 
         <p>Hi there <i class="em em-wave" aria-role="presentation" aria-label="WAVING HAND SIGN"></i> and welcome to my shell! I am Shubham Dhingra, a final year computer science 🖥️ student pursuing my bachelor's degree 
@@ -56,7 +58,7 @@
     <div id="terminal">
         <div class="terminal-line">
             <p class="command-text">user@terminal:<span class="terminal-path">~</span>&nbsp;>&nbsp;</p>
-            <input autocomplete="off" type="text" value="" style="width: 100%;" id="terminal-text-active" class="terminal-text">
+            <input autocapitalize="off" autocomplete="off" type="text" value="" style="width: 100%; text-decoration: none" id="terminal-text-active" class="terminal-text">
         </div>
     </div>
 

@@ -90,7 +90,7 @@ class Terminal {
             this.terminal.append(`
             <div class="terminal-line">
                 <p class="command-text">user@terminal:<span class="terminal-path">${this.path}</span>&nbsp;>&nbsp;</p>
-                <input autocomplete="off" type="text" value="" style="width: 100%;" id="terminal-text-active" class="terminal-text">
+                <input autocapitalize="off" autocomplete="off" type="text" value="" style="width: 100%; text-decoration: none" id="terminal-text-active" class="terminal-text">
             </div>`)
             document.getElementById('terminal-text-active').addEventListener('keyup', inputKeyUp)
 
@@ -168,11 +168,11 @@ let ls = new Command("Get a list of available directories", function (terminal) 
         let val = ele.name
         if (ele.isLink) {
             terminal.addDiv(`
-            <a href="${ele.link}" target="_blank" style='cursor: pointer;  font-weight: bold; margin-left: 15px; margin-right: 15px' class='fancy'>
+            <a href="${ele.link}" target="_blank" style='cursor: pointer;  font-weight: bold;' class='fancy ls-result'>
             ${val}\t</a>`)
         }
         else {
-            terminal.addDiv(`<span style='color: rgba(200, 200, 200, 1) !important; margin-left: 15px; margin-right: 15px'>${val}\t</span>`)
+            terminal.addDiv(`<span class='ls-result style='color: rgba(200, 200, 200, 1) !important;'>${val}\t</span>`)
         }
     })
     terminal.addLine('\n')
