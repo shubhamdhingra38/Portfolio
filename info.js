@@ -41,6 +41,11 @@ let mainDirectory = [
         name: 'github',
         isLink: true,
         link: githubLink
+    },
+    {
+        name: 'shubham.pkl',
+        isLink: false,
+        accessDenied: true
     }
 ]
 
@@ -93,6 +98,8 @@ def foo():
 
 
 let pythonClassBody = `
+#------------------------------------
+
 class Person:
     def __init__(self, firstName, lastName,
             age, location, skills, contact):
@@ -117,9 +124,10 @@ class Person:
         for skill in self.skills:
             print('•', skill)
 
-#------------------------------------
 import pickle
-shubham = pickle.loads('./myself.pkl')
+shubham = pickle.loads('./shubham.pkl')
+
+#------------------------------------
 
 
 `

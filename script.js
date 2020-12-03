@@ -13,10 +13,13 @@ info.skills.forEach(skill => {
 let pythonInfo = `
 >>> print(shubham)
 ${info.firstName} ${info.lastName}
+
 >>> shubham.getContactDetails()
 Feel free to reach me out at ${info.contact}
+
 >>> shubham.getLocationDetails()
 I current reside in ${info.location}, India
+
 >>> shubham.getSkills()
 Following are my skills
 ${skills}
@@ -49,6 +52,7 @@ class Terminal {
         console.log(this.terminalTexts)
         this.terminalTexts[this.terminalTexts.length - 1].innerText = `> ${textEntered}`
 
+        textEntered = textEntered.trimRight()
         if (textEntered.startsWith('cat ')) {
             let name = textEntered.split(' ')[1]
             this.commands['cat'].call(this, name)
@@ -72,7 +76,7 @@ class Terminal {
             this.showInvalid(textEntered)
         }
 
-        let path = '~'
+        this.path = '~'
         if (this.currentDirectory != '~') {
             this.path = `~/${this.currentDirectory}`
         }
@@ -187,6 +191,9 @@ let cat = new Command("List file contents", function (terminal, fName) {
             }
             else if (name == 'script.py') {
                 terminal.addLine(scriptText)
+            }
+            else if (name == 'shubham.pkl') {
+                terminal.addDiv("<p class='unauth'>Permission denied</p>")
             }
             console.log('here!!')
             ok = true

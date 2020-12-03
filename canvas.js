@@ -49,6 +49,7 @@ function draw() {
     streams.forEach(function (stream) {
         stream.render();
     });
+    // fill('rgba(0,0,0, 0.25)');
 
     rect(0, 0, 10, imgHeight)
     rect(0, 0, imgWidth, 10)
