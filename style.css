@@ -1,12 +1,13 @@
 body {
   margin-top: 100px;
   margin-left: 20px;
+  text-decoration: none !important;
   margin-right: 20px;
   background-color: rgba(0, 0, 0, 0.849);
   scroll-behavior: smooth;
   height: 100%;
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-  font-size: 0.95em;
+  font-size: 0.95rem;
 }
 
 
@@ -50,10 +51,16 @@ p {
 #terminal {
   border: none;
   background: transparent;
+  color: white;
+  font-size: 0.9rem;
 }
 
 .terminal-line {
   display: flex;
+}
+
+.pre-terminal{
+  white-space: pre-wrap;
 }
 
 #cursor {
@@ -61,7 +68,7 @@ p {
 }
 
 .terminal-text {
-  font-size: 0.95em !important;
+  font-size: 0.95rem !important;
   padding-right: 20px;
 }
 
@@ -98,7 +105,7 @@ p > a {
 
 .command-text{
   color: #00cc00 !important;
-  font-size: 0.95em !important;
+  font-size: 0.95rem !important;
 }
 
 input {
@@ -107,7 +114,7 @@ input {
   border: none;
   outline: none;
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-  font-size: 0.9em !important;
+  font-size: 0.9rem !important;
   color: #00cc00 !important;
   caret-color: #00cc00;
   /* background-color: rgb(36, 109, 16); */
@@ -130,10 +137,12 @@ input {
   font-size: 1rem !important;
 }
 
+.pre-name{
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
 @media only screen and (min-width: 768px) {
-  body {
-    background-color: rgb(0, 0, 0);
-  }
   .pre-name {
     color: white;
     font-weight: bold;
@@ -149,8 +158,10 @@ input {
   .pre-name {
     color: white;
     font-weight: bold;
-    margin-left: 50px;
-    font-size: 0.3rem;
+    /* margin-left: 50px; */
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 0.5rem;
     overflow-x: br;
     animation: changecolor 2s infinite;
     text-shadow: 0 0 2px #00cc00, 0 0 5px #00cc00;

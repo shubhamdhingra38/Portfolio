@@ -1,7 +1,7 @@
 let info = {
     "firstName": "Shubham",
     "lastName": "Dhingra",
-    "contact": "9582510066",
+    "contact": "dhingra.shubham38@gmail.com",
     "location": "Delhi",
     "skills": ["Python", "JavaScript", "Java", "Django", "ReactJS", "Web Scraping",
         "Machine Learning", "Deep Learning", "Natural Language Processing", "Full Stack Web Development", "Data Structures And Algorithms"],
@@ -94,7 +94,8 @@ def foo():
 
 let pythonClassBody = `
 class Person:
-    def __init__(self, firstName, lastName, age, location, skills, contact):
+    def __init__(self, firstName, lastName,
+            age, location, skills, contact):
         self.firstName = firstName
         self.lastName = lastName
         self.age = age
@@ -106,7 +107,7 @@ class Person:
         return f'{self.firstName} {self.lastName}'
     
     def getContactDetails(self):
-        return f'Feel free to reach me out at +91-{self.__contact}'
+        return f'Feel free to reach me out at {self.__contact}'
     
     def getLocationDetails(self):
         return f'I current reside in {location}, India'

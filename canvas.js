@@ -50,6 +50,11 @@ function draw() {
         stream.render();
     });
 
+    rect(0, 0, 10, imgHeight)
+    rect(0, 0, imgWidth, 10)
+    rect(imgWidth-10, 0, 10, imgHeight)
+    rect(0, imgHeight-10, imgWidth, 10)
+
 
 
 }
