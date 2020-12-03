@@ -1,13 +1,14 @@
 body {
   margin-top: 100px;
-  margin-left: 50px;
-  margin-right: 50px;
+  margin-left: 20px;
+  margin-right: 20px;
   background-color: rgba(0, 0, 0, 0.849);
   scroll-behavior: smooth;
   height: 100%;
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-  font-size: 19px;
+  font-size: 0.95em;
 }
+
 
 p > i {
   font-size: 13px;
@@ -18,15 +19,9 @@ p > i {
   color: green;
 }
 
-pre {
-  color: white;
-  font-weight: bold;
-  margin-left: 50px;
-  font-size: 12px;
-  animation: changecolor 2s infinite;
-  text-shadow: 0 0 2px #00cc00, 0 0 5px #00cc00;
 
-}
+
+
 p > strong {
   color: rgba(237, 132, 19, 0.995);
   cursor: pointer;
@@ -49,7 +44,9 @@ p {
 #terminal > p {
   color: rgb(1, 244, 54);
 }
-
+.pre-terminal {
+  color: white;
+}
 #terminal {
   border: none;
   background: transparent;
@@ -64,7 +61,7 @@ p {
 }
 
 .terminal-text {
-  font-size: 20px;
+  font-size: 0.95em !important;
   padding-right: 20px;
 }
 
@@ -101,18 +98,20 @@ p > a {
 
 .command-text{
   color: #00cc00 !important;
-  font-size: 20px !important;
+  font-size: 0.95em !important;
 }
 
 input {
+  overflow-wrap: break-word !important;
   background: rgba(0, 0, 0, 0);
   border: none;
   outline: none;
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-  font-size: 19px !important;
+  font-size: 0.9em !important;
   color: #00cc00 !important;
   caret-color: #00cc00;
   /* background-color: rgb(36, 109, 16); */
+  text-decoration: none;
   width: 100%;
 }
 
@@ -120,4 +119,44 @@ input {
   font-weight: bold;
   color: rgba(237, 132, 19, 0.995) !important;
   text-decoration: none;
+}
+
+.terminal-path{
+  color: rgba(255, 247, 0, 0.824);
+  margin-left: 5px;
+}
+
+.textual-info > p {
+  font-size: 1rem !important;
+}
+
+@media only screen and (min-width: 768px) {
+  body {
+    background-color: rgb(0, 0, 0);
+  }
+  .pre-name {
+    color: white;
+    font-weight: bold;
+    margin-left: 50px;
+    font-size: 0.8rem;
+    overflow-x: br;
+    animation: changecolor 2s infinite;
+    text-shadow: 0 0 2px #00cc00, 0 0 5px #00cc00;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .pre-name {
+    color: white;
+    font-weight: bold;
+    margin-left: 50px;
+    font-size: 0.3rem;
+    overflow-x: br;
+    animation: changecolor 2s infinite;
+    text-shadow: 0 0 2px #00cc00, 0 0 5px #00cc00;
+  }
+  #photo{
+    margin-left: auto;
+    margin-right: auto;
+  }
 }

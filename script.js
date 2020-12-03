@@ -46,10 +46,13 @@ class Terminal {
 
         //create new node and append as child
         console.log(this.terminalTexts)
-        this.terminalTexts[this.terminalTexts.length - 1].innerText += `${textEntered}`
+        this.terminalTexts[this.terminalTexts.length - 1].innerText = `> ${textEntered}`
 
-
-        if (this.commands[textEntered]) {
+        if(textEntered.startsWith('cat ')){
+            let name = textEntered.split(' ')[1]
+            this.commands['cat'].call(this, name)
+        }
+        else if (this.commands[textEntered]) {
             this.commands[textEntered].call(this)
         }
         else if(textEntered.startsWith('cd ')){
@@ -63,11 +66,13 @@ class Terminal {
             this.showInvalid(textEntered)
         }
 
-
-
+        let path = '~'
+        if(this.currentDirectory != '~'){
+            path = `~/${this.currentDirectory}`
+        }
         this.terminal.append(`
         <div class="terminal-line">
-            <p class="command-text">>&nbsp;</p>
+            <p class="command-text">user@terminal:<span class="terminal-path">${path}</span>&nbsp;>&nbsp;</p>
             <input autocomplete="off" type="text" value="" style="width: 100%;" id="terminal-text-active" class="terminal-text">
         </div>`)
 
@@ -83,7 +88,7 @@ class Terminal {
     }
 
     addLine(lineText) {
-        this.terminal.append(`<p>${lineText}</p>`)
+        this.terminal.append(`<pre class='pre-terminal'>${lineText}</pre>`)
     }
 
     addDiv(divText){
@@ -116,8 +121,6 @@ class Command {
 }
 
 
-// function removeAllChildNodes(parent) {
-// }
 
 
 
@@ -142,33 +145,38 @@ let ls = new Command("Get a list of available directories", function (terminal) 
         let val = ele.name
         if (ele.isLink) {
             terminal.addDiv(`
-            <a href="${ele.link}" target="_blank" style='cursor: pointer;  font-weight: bold; margin-left: 10px; margin-right: 10px' class='fancy'>
+            <a href="${ele.link}" target="_blank" style='cursor: pointer;  font-weight: bold; margin-left: 15px; margin-right: 15px' class='fancy'>
             ${val}\t</a>`)
         }
         else {
-            terminal.addDiv(`<span style='color: rgba(200, 200, 200, 1) !important; margin-left: 10px; margin-right: 10px'>${val}\t</span>`)
+            terminal.addDiv(`<span style='color: rgba(200, 200, 200, 1) !important; margin-left: 15px; margin-right: 15px'>${val}\t</span>`)
         }
     })
     terminal.addLine('\n')
 })
 
-let cat = new Command("List file contents", function (fName) {
-    if (!fName || fName.length == 0) {
-        console.log('bad')
-    }
-    else {
+//returns true if successful operation otherwise false
+let cat = new Command("List file contents", function (terminal, fName) {
+    let ok = false
+    if(fName && fName != ''){
         let directoryList = []
-        directory.forEach(ele => directoryList.push(ele.name))
+        terminal.directoryContents.forEach(ele => directoryList.push(ele.name))
         let name = fName.trimRight()
         if (directoryList.includes(name)) { //file in CURRENT directory
             if (name == 'about.txt') {
-                terminal.lastElementChild.innerText += '\n' + aboutText
+                terminal.addLine(aboutText)
             }
             else if (name == 'script.py') {
-                terminal.lastElementChild.innerText += '\n' + scriptText
+                terminal.addLine(scriptText)
             }
+            console.log('here!!')
+            ok = true
         }
     }
+    let name = fName || ''
+    if(!ok){ //nothing found
+        terminal.addLine(`cat: ${name}: No such file`)
+    } 
 })
 
 let python = new Command("Python shell", function () {
@@ -192,9 +200,26 @@ let cd = new Command("Change Directory", function (terminal, dirName) {
     else if (dirName == '' || dirName == '/' || dirName == '~' || dirName == '..') {
         terminal.changeDirectory('~', mainDirectory)
     }
+    else if (dirName == 'resume.pdf') {
+        window.open(resumeLink, '_blank')
+    }
+    else if (dirName == 'github') {
+        window.open(githubLink, '_blank')
+    }
+
     else{
+        //search if it is a project
+        let found = false
+        projectsDirectory.forEach(project => {
+            if(project.name == dirName){
+                found = true
+                window.open(project.link, "_blank")
+            }
+        })
         //invalid dir
-        terminal.addLine(`cd: no such file or directory: ${dirName}`)
+        if(!found){
+            terminal.addLine(`cd: no such directory: ${dirName}`)
+        }
     }
 })
 
@@ -221,7 +246,7 @@ function typeWriter(element, txt, speed) {
 
 
 let commands = {
-    'ls': ls, 'help': help, 'clear': clear, 'cd': cd
+    'ls': ls, 'help': help, 'clear': clear, 'cd': cd, 'cat': cat
 }
 
 

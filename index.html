@@ -9,7 +9,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.dom.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.sound.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.js" integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.js" integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" crossorigin="anonymous"></script> -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css" />
     <link href="https://emoji-css.afeld.me/emoji.css" rel="stylesheet">
     <script src="./script.js" defer></script>
@@ -20,7 +21,7 @@
     <div class="info">
     <div class="top">
         <div id="photo"></div>
-<pre> 
+<pre class="pre-name"> 
   ____   _             _      _                         ____   _      _                           
  / ___| | |__   _   _ | |__  | |__    __ _  _ __ ___   |  _ \ | |__  (_) _ __    __ _  _ __  __ _ 
  \___ \ | '_ \ | | | || '_ \ | '_ \  / _` || '_ ` _ \  | | | || '_ \ | || '_ \  / _` || '__|/ _` |
@@ -29,8 +30,9 @@
                                                                                 |___/             
 </pre>
 </div>
-    <div class="textual-info">
 
+    <div class="textual-info">
+        
         <p>
             Click or type in <strong onclick="showHelp()">"help"</strong> for a list of available commands.
         </p>
@@ -52,11 +54,12 @@
 
     <div id="terminal">
         <div class="terminal-line">
-            <p class="command-text">>&nbsp;</p>
+            <p class="command-text">user@terminal:<span class="terminal-path">~</span>&nbsp;>&nbsp;</p>
             <input autocomplete="off" type="text" value="" style="width: 100%;" id="terminal-text-active" class="terminal-text">
         </div>
     </div>
 
+ 
 
     <script src="./canvas.js"></script>
 

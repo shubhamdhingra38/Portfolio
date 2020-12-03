@@ -1,10 +1,9 @@
 let img
 let imgWidth, imgHeight
-imgWidth = 220
-imgHeight = 300
+imgWidth = 170
+imgHeight = 220
 function preload() {
     img = loadImage('static/static.jpeg');
-    img.resize(400, 300)
 }
 
 //by Emily Xie
@@ -15,7 +14,7 @@ myAlphabets.push(...['{', '}', '#', '_', '-', ':', '(', ')'])
 console.log(myAlphabets)
 
 let speedUpper, speedLower
-speedUpper = 5
+speedUpper = 4
 speedLower = 5
 
 
@@ -24,7 +23,7 @@ var fadeInterval = 1.4;
 var symbolSize = 15;
 
 function setup() {
-    let cnv = createCanvas(imgWidth+5, imgHeight+5)
+    let cnv = createCanvas(imgWidth, imgHeight)
     cnv.parent('photo')
     // Top-left corner of the img is at (0, 0)
     // Width and height are the img's original width and height
@@ -40,15 +39,19 @@ function setup() {
     textSize(symbolSize);
 }
 
+
 function draw() {
     fill(0, 255, 0, 250)
-    rect(0, 0, imgWidth+5, imgHeight+5, 5);
-    image(img, 5, 5, imgWidth-5, imgHeight-5);
+    rect(0, 0, imgWidth, imgHeight)
+    image(img, 5, 5, imgWidth-10, imgHeight-10);
 
     frameRate(15)
     streams.forEach(function (stream) {
         stream.render();
     });
+
+
+
 }
 
 function Symbol(x, y, speed, first, opacity) {

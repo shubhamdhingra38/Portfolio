@@ -7,6 +7,9 @@ let info = {
         "Machine Learning", "Deep Learning", "Natural Language Processing", "Full Stack Web Development", "Data Structures And Algorithms"],
 }
 
+let resumeLink = "https://drive.google.com/file/d/1qLlfsaOC6vwpM5ZjZi67grcQ_oEbFBZJ/view"
+let githubLink = "https://github.com/shubhamdhingra38"
+
 
 let mainDirectory = [
     {    
@@ -32,14 +35,16 @@ let mainDirectory = [
     {    
         name: 'resume.pdf',
         isLink: true,
-        link: "https://drive.google.com/file/d/1qLlfsaOC6vwpM5ZjZi67grcQ_oEbFBZJ/view"
+        link: resumeLink
     },
     {
         name: 'github',
         isLink: true,
-        link: "https://github.com/shubhamdhingra38"
+        link: githubLink
     }
 ]
+
+
 let projectsDirectory = [
     {    
         name: 'QuickGrader',
@@ -78,6 +83,10 @@ Location: ${info.location}
 `
 
 let scriptText = `
+#How to make people mad at you
+
+import numpy as pd
+import pandas as np
 def foo():
     print("bar")
 `
@@ -113,3 +122,4 @@ shubham = pickle.loads('./myself.pkl')
 
 
 `
+
