@@ -143,13 +143,23 @@ input {
   margin-bottom: auto;
 }
 
+.pre-name{
+  color: white;
+  font-weight: bold;
+  margin-left: 50px;
+  font-size: 0.8rem;
+  animation: changecolor 2s infinite;
+  text-shadow: 0 0 2px #00cc00, 0 0 5px #00cc00;
+}
+
+
 @media only screen and (min-width: 768px) {
   .pre-name {
     color: white;
     font-weight: bold;
+    font-size: 8px !important;
     margin-left: 50px;
     font-size: 0.8rem;
-    overflow-x: br;
     animation: changecolor 2s infinite;
     text-shadow: 0 0 2px #00cc00, 0 0 5px #00cc00;
   }
@@ -157,15 +167,10 @@ input {
 
 @media only screen and (max-width: 767px) {
   .pre-name {
-    color: white;
-    font-weight: bold;
-    /* margin-left: 50px; */
+    font-size: 5px !important;
     margin-left: auto;
     margin-right: auto;
-    font-size: 0.5rem;
     overflow-x: br;
-    animation: changecolor 2s infinite;
-    text-shadow: 0 0 2px #00cc00, 0 0 5px #00cc00;
   }
   #photo{
     margin-left: auto;
