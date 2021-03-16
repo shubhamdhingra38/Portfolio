@@ -49,25 +49,38 @@ let mainDirectory = [
 let projectsDirectory = [
     {    
         name: 'QuickGrader',
+        desc: 'Uses NLP for making the process of grading short answer quizzes in a largely automated fashion. Also includes plagiarism detection.',
         isLink: true,
-        link: "https://github.com/shubhamdhingra38/Quick-Grader"
+        link: "https://github.com/shubhamdhingra38/Quick-Grader",
+        image: "https://github.com/shubhamdhingra38/Quick-Grader/blob/master/screenshots/addques.png?raw=true"
     },
     {    
         name: 'Collaborative_Code_Editing',
+        desc: 'A web application which uses sockets to enable real-time code sharing, chatting and canvas sketching all at once.',
         isLink: true,
-        link: "https://github.com/shubhamdhingra38/Live-Collaborative-Code-Editing"
+        link: "https://github.com/shubhamdhingra38/Live-Collaborative-Code-Editing",
+        image: "https://raw.githubusercontent.com/shubhamdhingra38/Live-Collaborative-Code-Editing/master/Screenshots/Screenshot.png"
     },
     {    
         name: 'QFiction',
         isLink: true,
-        link: "https://github.com/shubhamdhingra38/QFiction"
+        desc: 'Used a pre-trained BERT model on SQuAD and performed fine-tuning on several fiction novels corpus. It allows searching for an answer to a given question in the reference text.', 
+        link: "https://github.com/shubhamdhingra38/QFiction",
+        image: "https://raw.githubusercontent.com/shubhamdhingra38/QFiction/master/screenshots/Screenshot%202020-09-23%20at%207.07.21%20AM.png"
+
     },
     {    
         name: 'Visual_Algorithms',
+        desc: 'This project provides an intuitive view of how algorithms works, which is by visualizing them and looking at what operations are performed at every step.',
+        techStack: ['JavaScript', 'p5.js', 'Bootstrap'],
         isLink: true,
-        link: "https://github.com/shubhamdhingra38/Visual-Algorithms"
+        link: "https://github.com/shubhamdhingra38/Visual-Algorithms",
+        image: "https://raw.githubusercontent.com/shubhamdhingra38/Visual-Algorithms/master/main/static/main/images/TSP.png"
+
     },
 ]
+
+
 
 let contactDirectory = [
     {

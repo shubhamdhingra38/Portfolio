@@ -10,23 +10,16 @@ body {
   font-size: 0.95rem;
 }
 
-
-p > i {
-  font-size: 13px;
-}
-
 .terminal-text {
   white-space: pre-wrap;
   color: green;
 }
 
-
-
-
-p > strong {
+p>strong {
   color: rgba(237, 132, 19, 0.995);
   cursor: pointer;
 }
+
 p {
   color: white;
 }
@@ -37,17 +30,18 @@ p {
   }
   50% {
     color: rgb(10, 255, 10);
-    text-shadow: 0 0 20px rgba(0,0,0,0.5);
-
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
   }
 }
 
-#terminal > p {
+#terminal>p {
   color: rgb(1, 244, 54);
 }
+
 .pre-terminal {
   color: white;
 }
+
 #terminal {
   border: none;
   background: transparent;
@@ -59,7 +53,7 @@ p {
   display: flex;
 }
 
-.pre-terminal{
+.pre-terminal {
   white-space: pre-wrap;
 }
 
@@ -72,7 +66,6 @@ p {
   padding-right: 20px;
 }
 
-
 #terminal-text-active:after {
   content: "";
   width: 20px;
@@ -82,17 +75,19 @@ p {
   /* display: inline-block; */
   animation: blink 0.8s linear infinite alternate;
 }
-p > a {
+
+p>a {
   color: rgb(17, 255, 152);
   text-decoration: none;
 }
+
 @keyframes blink {
   50% {
     opacity: 0;
   }
   100% {
     opacity: 1;
-  text-shadow: 0 0 2px #00cc00, 0 0 5px #00cc00;
+    text-shadow: 0 0 2px #00cc00, 0 0 5px #00cc00;
   }
 }
 
@@ -103,7 +98,7 @@ p > a {
   justify-content: start;
 }
 
-.command-text{
+.command-text {
   color: #00cc00 !important;
   font-size: 0.95rem !important;
 }
@@ -123,27 +118,27 @@ input {
   width: 100%;
 }
 
-.fancy{
+.fancy {
   font-weight: bold;
   color: rgba(237, 132, 19, 0.995) !important;
   text-decoration: none;
 }
 
-.terminal-path{
+.terminal-path {
   color: rgba(255, 247, 0, 0.824);
   margin-left: 5px;
 }
 
-.textual-info > p {
+.textual-info>p {
   font-size: 1rem !important;
 }
 
-.pre-name{
+.pre-name {
   margin-top: auto;
   margin-bottom: auto;
 }
 
-.pre-name{
+.pre-name {
   color: white;
   font-weight: bold;
   margin-left: 50px;
@@ -151,7 +146,6 @@ input {
   animation: changecolor 2s infinite;
   text-shadow: 0 0 2px #00cc00, 0 0 5px #00cc00;
 }
-
 
 @media only screen and (min-width: 768px) {
   .pre-name {
@@ -172,7 +166,7 @@ input {
     margin-right: auto;
     overflow-x: br;
   }
-  #photo{
+  #photo {
     margin-left: auto;
     margin-right: auto;
   }
@@ -184,3 +178,45 @@ input {
   line-height: 25px;
 }
 
+.project {
+  background-color: rgba(187, 187, 187, 0.25);
+  width: 350px;
+  height: 350px;
+  border: #ffffff solid 2px;
+  text-decoration: none;
+}
+
+.project:hover {
+  transition: background-color 0.25s ease;
+  transition: transform 0.5s ease;
+  border-color: rgb(0, 255, 21);
+  transform: scale(1.05, 1.05);
+  background-color: #000;
+  cursor: pointer;
+}
+
+.project-title {
+  text-align: center;
+  color: rgb(0, 255, 21);
+  font-weight: bolder;
+}
+
+.project-desc {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.project>img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  max-height: 200px;
+}
+
+.project-container {
+  margin-left: 50px;
+  margin-right: 50px;
+  display: flex;
+  justify-content: space-around;
+}
