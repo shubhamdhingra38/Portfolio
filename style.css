@@ -179,6 +179,7 @@ input {
 }
 
 .project {
+  padding: 5px 20px; 
   background-color: rgba(187, 187, 187, 0.25);
   width: 350px;
   height: 350px;
@@ -202,8 +203,6 @@ input {
 }
 
 .project-desc {
-  margin-left: 10px;
-  margin-right: 10px;
 }
 
 .project>img {

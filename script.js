@@ -220,16 +220,18 @@ let cd = new Command("Change Directory", function (terminal, dirName) {
   } else if (dirName == "github") {
     window.open(githubLink, "_blank");
   } else {
-    //search if it is a project
     let found = false;
-    projectsDirectory.forEach((project) => {
-      if (project.name == dirName) {
-        found = true;
-        // window.open(project.link, "_blank")
+
+    if (terminal.currentDirectory.startsWith('projects')) {
+      //search if it is a project
+      projectsDirectory.forEach((project) => {
+        if (project.name == dirName) {
+          found = true;
+          // window.open(project.link, "_blank")
 
 
-        $("#terminal").append(
-        `<div class="project-container">
+          $("#terminal").append(
+            `<div class="project-container">
             <a href="${project.link}" target="_blank" style="text-decoration:none">
             <div class="project">
                 <p class="project-title">${project.name}</p>
@@ -238,12 +240,13 @@ let cd = new Command("Change Directory", function (terminal, dirName) {
             </div>
             </a>
         </div>`
-        );
+          );
 
-        // let projectElement = document.getElementsByClassName('project')[0]
-        // projectElement.appendChild(list)
-      }
-    });
+          // let projectElement = document.getElementsByClassName('project')[0]
+          // projectElement.appendChild(list)
+        }
+      });
+    }
     //invalid dir
     if (!found) {
       terminal.addLine(`cd: no such directory: ${dirName}`);
@@ -264,15 +267,15 @@ class Project {
 
 //helper functions
 function makeUL(array) {
-    let list = document.createElement('ul');
-    for (let i = 0; i < array.length; i++) {
-        let item = document.createElement('li');
-        item.appendChild(document.createTextNode(array[i]));
-        list.appendChild(item);
-    }
+  let list = document.createElement('ul');
+  for (let i = 0; i < array.length; i++) {
+    let item = document.createElement('li');
+    item.appendChild(document.createTextNode(array[i]));
+    list.appendChild(item);
+  }
 
-    // Finally, return the constructed list:
-    return list;
+  // Finally, return the constructed list:
+  return list;
 }
 
 function typeWriter(terminal, txt, speed) {
