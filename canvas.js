@@ -6,8 +6,6 @@ function preload() {
     img = loadImage('static/static.jpeg');
 }
 
-//by Emily Xie
-//modified by Shubham Dhingra
 
 let myAlphabets = 'abcdefghijklmnopqrstuvwxyz'.split('');
 myAlphabets.push(...['{', '}', '#', '_', '-', ':', '(', ')'])

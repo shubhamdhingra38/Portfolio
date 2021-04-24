@@ -1,29 +1,11 @@
 let terminalText = document.getElementById("terminal-text");
-var i = 0; //TODO remove global variable
+var i = 0;
 
-//parsing some data
-//------------------------------------------------
-
-let skills = "";
-info.skills.forEach((skill) => {
-  skills += "• " + skill + "\n";
-});
-
-let pythonInfo = `
->>> print(shubham)
-${info.firstName} ${info.lastName}
-
->>> shubham.getContactDetails()
-Feel free to reach me out at ${info.contact}
-
->>> shubham.getLocationDetails()
-I current reside in ${info.location}, India
-
->>> shubham.getSkills()
-Following are my skills
-${skills}
-`;
-//------------------------------------------------
+let emailDetails = {
+  senderName: "",
+  subject: "",
+  body: "",
+};
 
 class Terminal {
   constructor(commands) {
@@ -34,10 +16,11 @@ class Terminal {
     this.currentDirectory = "~";
     this.path = "~";
     this.directoryContents = mainDirectory;
+    this.lastEnteredText = "";
+    this.inputMode = false;
   }
 
   createNextLine() {
-    //TODO when command is executed, create a new line for input
     console.log("Creating a new line");
     let ele = $("#terminal-text-active");
     let textEntered = ele.val();
@@ -46,17 +29,31 @@ class Terminal {
 
     //create new node and append as child
     console.log(this.terminalTexts);
+    if (this.inputMode) {
+      this.addLine(textEntered);
+      this.lastEnteredText = textEntered;
+      this.commands["./"].call(this);
+
+      if (this.commands["./"].ptr !== mailInputInfo.length + 1)
+        terminal.createNextCursor();
+      return;
+    }
+
     this.terminalTexts[
       this.terminalTexts.length - 1
     ].innerText = `> ${textEntered}`;
 
     textEntered = textEntered.trimRight();
+
     if (textEntered.startsWith("cat ")) {
       let name = textEntered.split(" ")[1];
       this.commands["cat"].call(this, name);
     } else if (textEntered == "python") {
       this.active = false;
       this.commands["python"].call(this);
+    } else if (textEntered.startsWith("./")) {
+      this.commands["./"].call(this);
+      this.inputMode = true;
     } else if (this.commands[textEntered]) {
       this.commands[textEntered].call(this);
     } else if (textEntered.startsWith("cd ")) {
@@ -77,16 +74,25 @@ class Terminal {
   }
 
   createNextCursor() {
-    if (this.active) {
+    if (this.inputMode) {
+      alert("yes input mode");
+      this.terminal.append(`
+      <input id="terminal-text-active" autocapitalize="off" autocomplete="off" type="text" value="" style="width: 100%; text-decoration: none>">`);
+      document.getElementById("terminal-text-active").focus();
+
+      document
+        .getElementById("terminal-text-active")
+        .addEventListener("keyup", inputKeyUp);
+    } else if (this.active) {
       this.terminal.append(`
             <div class="terminal-line">
                 <p class="command-text">user@terminal:<span class="terminal-path">${this.path}</span>&nbsp;>&nbsp;</p>
                 <input autocapitalize="off" autocomplete="off" type="text" value="" style="width: 100%; text-decoration: none" id="terminal-text-active" class="terminal-text">
             </div>`);
+
       document
         .getElementById("terminal-text-active")
         .addEventListener("keyup", inputKeyUp);
-
       this.terminalTexts = document.getElementsByClassName("command-text");
       document.getElementById("terminal-text-active").focus();
     }
@@ -98,6 +104,10 @@ class Terminal {
 
   addLine(lineText) {
     this.terminal.append(`<pre class='pre-terminal'>${lineText}</pre>`);
+  }
+
+  addLineInput(lineText) {
+    this.terminal.append(`<pre class='terminal-text-active'>${lineText}</pre>`);
   }
 
   addDiv(divText) {
@@ -126,10 +136,12 @@ class Command {
   constructor(desc, func) {
     this.desc = desc;
     this.func = func;
+    this.ptr = 0;
   }
 
   call(...args) {
-    this.func(...args);
+    this.func(...args, this.ptr);
+    this.ptr += 1;
   }
 }
 
@@ -169,17 +181,23 @@ let ls = new Command(
 let cat = new Command("List file contents", function (terminal, fName) {
   let ok = false;
   if (fName && fName != "") {
-    let directoryList = [];
-    terminal.directoryContents.forEach((ele) => directoryList.push(ele.name));
     let name = fName.trimRight();
-    if (directoryList.includes(name)) {
+    let info = null;
+    terminal.directoryContents.forEach((ele) => {
+      if (ele.name === name) {
+        info = ele;
+      }
+    });
+    if (info) {
       //file in CURRENT directory
-      if (name == "about.txt") {
-        terminal.addLine(aboutText);
-      } else if (name == "script.py") {
-        terminal.addLine(scriptText);
-      } else if (name == "shubham.pkl") {
+      if (info.accessDenied) {
         terminal.addDiv("<p class='unauth'>Permission denied</p>");
+      } else {
+        if (name == "about.txt") {
+          terminal.addLine(aboutText);
+        } else if (name == "script.py") {
+          terminal.addLine(scriptText);
+        }
       }
       ok = true;
     }
@@ -198,6 +216,7 @@ let python = new Command("Python shell", function (terminal) {
     'Type "help" for more information or "exit" to quit the Python shell.\n'
   );
   terminal.addLine(pythonClassBody);
+
   typeWriter(terminal, pythonInfo, 20);
   pythonActive = true;
 });
@@ -222,13 +241,17 @@ let cd = new Command("Change Directory", function (terminal, dirName) {
   } else {
     let found = false;
 
-    if (terminal.currentDirectory.startsWith('projects')) {
+    if (terminal.currentDirectory.startsWith("projects")) {
       //search if it is a project
       projectsDirectory.forEach((project) => {
         if (project.name == dirName) {
           found = true;
           // window.open(project.link, "_blank")
 
+          let tags = project.tags.map((tag) => {
+            return `<p class="tag">${tag}</p>`;
+          });
+          let tagsElement = tags.join("\n");
 
           $("#terminal").append(
             `<div class="project-container">
@@ -236,14 +259,15 @@ let cd = new Command("Change Directory", function (terminal, dirName) {
             <div class="project">
                 <p class="project-title">${project.name}</p>
                 <p class="project-desc">${project.desc}</p>
-                <img  src="${project.image}" alt="">
+                <img src="${project.image}" alt="">
+                <p>Tech stack:</p>
+                <div class="tags">
+                  ${tagsElement}
+                </div>
             </div>
             </a>
         </div>`
           );
-
-          // let projectElement = document.getElementsByClassName('project')[0]
-          // projectElement.appendChild(list)
         }
       });
     }
@@ -252,6 +276,51 @@ let cd = new Command("Change Directory", function (terminal, dirName) {
       terminal.addLine(`cd: no such directory: ${dirName}`);
     }
   }
+});
+
+const resetTerminalInput = (terminal) => {
+  terminal.commands["./"].ptr = 0;
+  terminal.inputMode = false;
+  terminal.createNextCursor();
+};
+
+let exec = new Command("Execute file", function (terminal, ptr) {
+  let terminalText = terminal.lastEnteredText;
+
+  let text = mailInputInfo[ptr];
+  if (ptr !== 0) {
+    let key = mailInputFields[ptr - 1];
+    emailDetails[key] = terminalText;
+  }
+  if (ptr == mailInputInfo.length) {
+    console.log("Details are:", emailDetails);
+
+    let formData = new FormData();
+    formData.append("service_id", "service_7f04whc");
+    formData.append("template_id", "template_ud54ccf");
+    formData.append("user_id", "user_PVfFPcFv9TqO6mBtcMQfe");
+    formData.append("from_name", emailDetails.senderName);
+    formData.append("to_name", "Shubham");
+    formData.append("subject", emailDetails.subject);
+    formData.append("message", emailDetails.body);
+
+    $.ajax("https://api.emailjs.com/api/v1.0/email/send-form", {
+      type: "POST",
+      data: formData,
+      contentType: false, // auto-detection
+      processData: false, // no need to parse formData to string
+    })
+      .done(function () {
+        terminal.addLine("Successfully sent an e-mail!");
+        resetTerminalInput(terminal);
+      })
+      .fail(function (error) {
+        terminal.addLine("Oops! Could not send the e-mail.");
+        resetTerminalInput(terminal);
+      });
+    return;
+  }
+  terminal.addLine(text);
 });
 
 //----------------------------------------------------------------
@@ -267,9 +336,9 @@ class Project {
 
 //helper functions
 function makeUL(array) {
-  let list = document.createElement('ul');
+  let list = document.createElement("ul");
   for (let i = 0; i < array.length; i++) {
-    let item = document.createElement('li');
+    let item = document.createElement("li");
     item.appendChild(document.createTextNode(array[i]));
     list.appendChild(item);
   }
@@ -302,6 +371,8 @@ let commands = {
   cd: cd,
   cat: cat,
   python: python,
+  python3: python,
+  "./": exec,
 };
 
 const terminal = new Terminal(commands);
@@ -315,9 +386,24 @@ function inputKeyUp(e) {
   }
 }
 
+var data = {
+  service_id: "service_7f04whc",
+  template_id: "template_ud54ccf",
+};
+
 $(document).ready(() => {
   document
     .getElementById("terminal-text-active")
     .addEventListener("keyup", inputKeyUp);
   document.getElementById("terminal-text-active").focus();
 });
+
+window.onload = () => {
+  // var formData = new FormData();
+  // formData.append("service_id", "service_7f04whc");
+  // formData.append("template_id", "template_ud54ccf");
+  // formData.append("user_id", "user_PVfFPcFv9TqO6mBtcMQfe");
+  // formData.append("from_name", "XYZ")
+  // formData.append("to_name", "ABC")
+  // formData.append("message", "lorem ipsum dolor")
+};

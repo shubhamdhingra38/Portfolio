@@ -1,100 +1,133 @@
 let info = {
-    "firstName": "Shubham",
-    "lastName": "Dhingra",
-    "contact": "dhingra.shubham38@gmail.com",
-    "location": "Delhi",
-    "skills": ["Python", "JavaScript", "Java", "Django", "ReactJS", "Web Scraping",
-        "Machine Learning", "Deep Learning", "Natural Language Processing", "Full Stack Web Development", "Data Structures And Algorithms"],
-}
+  firstName: "Shubham",
+  lastName: "Dhingra",
+  contact: "dhingra.shubham38@gmail.com",
+  location: "Delhi",
+  skills: [
+    "Python",
+    "JavaScript",
+    "Java",
+    "Django",
+    "ReactJS",
+    "Web Scraping",
+    "Machine Learning",
+    "Deep Learning",
+    "Natural Language Processing",
+    "Full Stack Web Development",
+    "Data Structures And Algorithms",
+  ],
+};
 
-let resumeLink = "https://drive.google.com/file/d/1qLlfsaOC6vwpM5ZjZi67grcQ_oEbFBZJ/view"
-let githubLink = "https://github.com/shubhamdhingra38"
-
+let resumeLink =
+  "https://drive.google.com/file/d/1qLlfsaOC6vwpM5ZjZi67grcQ_oEbFBZJ/view";
+let githubLink = "https://github.com/shubhamdhingra38";
 
 let mainDirectory = [
-    {    
-        name: 'about.txt',
-        isLink: false
-    },
-    {    
-        name: 'script.py',
-        isLink: false
-    },
-    {    
-        name: 'projects/',
-        isLink: true
-    },
-    {    
-        name: 'contact/',
-        isLink: true
-    },
-    {    
-        name: 'resume.pdf',
-        isLink: true,
-        link: resumeLink
-    },
-    {
-        name: 'github',
-        isLink: true,
-        link: githubLink
-    },
-    {
-        name: 'shubham.pkl',
-        isLink: false,
-        accessDenied: true
-    }
-]
-
+  {
+    name: "about.txt",
+    isLink: false,
+  },
+  {
+    name: "script.py",
+    isLink: false,
+  },
+  {
+    name: "projects/",
+    isLink: true,
+  },
+  {
+    name: "contact/",
+    isLink: true,
+  },
+  {
+    name: "resume.pdf",
+    isLink: true,
+    link: resumeLink,
+  },
+  {
+    name: "github",
+    isLink: true,
+    link: githubLink,
+  },
+  {
+    name: "shubham.pkl",
+    isLink: false,
+    accessDenied: true, //read permission
+  },
+];
 
 let projectsDirectory = [
-    {    
-        name: 'QuickGrader',
-        desc: 'Uses NLP for making the process of grading short answer quizzes in a largely automated fashion. Also includes plagiarism detection.',
-        isLink: true,
-        link: "https://github.com/shubhamdhingra38/Quick-Grader",
-        image: "https://github.com/shubhamdhingra38/Quick-Grader/blob/master/screenshots/addques.png?raw=true"
-    },
-    {    
-        name: 'Collaborative_Code_Editing',
-        desc: 'A web application which uses sockets to enable real-time code sharing, chatting and canvas sketching all at once.',
-        isLink: true,
-        link: "https://github.com/shubhamdhingra38/Live-Collaborative-Code-Editing",
-        image: "https://raw.githubusercontent.com/shubhamdhingra38/Live-Collaborative-Code-Editing/master/Screenshots/Screenshot.png"
-    },
-    {    
-        name: 'QFiction',
-        isLink: true,
-        desc: 'Used a pre-trained BERT model on SQuAD and performed fine-tuning on several fiction novels corpus. It allows searching for an answer to a given question in the reference text.', 
-        link: "https://github.com/shubhamdhingra38/QFiction",
-        image: "https://raw.githubusercontent.com/shubhamdhingra38/QFiction/master/screenshots/Screenshot%202020-09-23%20at%207.07.21%20AM.png"
+  {
+    name: "QuickGrader",
+    desc:
+      "Uses NLP for making the process of grading short answer quizzes in a largely automated fashion. Also includes plagiarism detection.",
+    isLink: true,
+    link: "https://github.com/shubhamdhingra38/Quick-Grader",
+    image:
+      "https://github.com/shubhamdhingra38/Quick-Grader/blob/master/screenshots/addques.png?raw=true",
+    tags: [
+        'ReactJS', 'Django', 'Django Rest Framework', 'MaterialUI', 'Machine Learning', 'NLP'
+    ]
+  },
+  {
+    name: "Collaborative_Code_Editing",
+    desc:
+      "A web application which uses sockets to enable real-time code sharing, chatting and canvas sketching all at once.",
+    isLink: true,
+    link: "https://github.com/shubhamdhingra38/Live-Collaborative-Code-Editing",
+    image:
+      "https://raw.githubusercontent.com/shubhamdhingra38/Live-Collaborative-Code-Editing/master/Screenshots/Screenshot.png",
+    tags: [
+        'Django', 'Django Channels', 'Django Rest Framework', 'HTML/CSS', 'Boostrap'
+    ]
+  },
+  {
+    name: "QFiction",
+    isLink: true,
+    desc:
+      "Used a pre-trained BERT model on SQuAD and performed fine-tuning on several fiction novels corpus. It allows searching for an answer to a given question in the reference text.",
+    link: "https://github.com/shubhamdhingra38/QFiction",
+    image:
+      "https://raw.githubusercontent.com/shubhamdhingra38/QFiction/master/screenshots/Screenshot%202020-09-23%20at%207.07.21%20AM.png",
+    tags: [
+        'HTML/CSS', 'Bootstrap', 'Python', 'Flask', 'NLP'
+    ]
+  },
 
-    },
-    {    
-        name: 'Visual_Algorithms',
-        desc: 'This project provides an intuitive view of how algorithms works, which is by visualizing them and looking at what operations are performed at every step.',
-        techStack: ['JavaScript', 'p5.js', 'Bootstrap'],
-        isLink: true,
-        link: "https://github.com/shubhamdhingra38/Visual-Algorithms",
-        image: "https://raw.githubusercontent.com/shubhamdhingra38/Visual-Algorithms/master/main/static/main/images/TSP.png"
-
-    },
-]
-
-
+  {
+    name: "Visual_Algorithms",
+    desc:
+      "This project provides an intuitive view of how algorithms works, which is by visualizing them and looking at what operations are performed at every step.",
+    techStack: ["JavaScript", "p5.js", "Bootstrap"],
+    isLink: true,
+    link: "https://github.com/shubhamdhingra38/Visual-Algorithms",
+    image:
+      "https://raw.githubusercontent.com/shubhamdhingra38/Visual-Algorithms/master/main/static/main/images/TSP.png",
+    tags: [
+        'HTML/CSS', 'JavaScript', 'p5.js', 'Bootstrap'
+    ]
+  },
+];
 
 let contactDirectory = [
-    {
-        name: 'LinkedIn',
-        isLink: true,
-        link: "https://www.linkedin.com/in/shubham-dhingra-33372819b/"
-    },
-]
+  {
+    name: "LinkedIn",
+    isLink: true,
+    link: "https://www.linkedin.com/in/shubham-dhingra-33372819b/",
+  },
+  {
+    name: "email_me.sh",
+    isLink: false,
+    accessDenied: true, //read permission
+    isExecutable: true,
+  },
+];
 
 let aboutText = `
 Name: ${info.firstName} ${info.lastName}
 Contact: ${info.contact}
 Location: ${info.location}
-`
+`;
 
 let scriptText = `
 #How to make people mad at you
@@ -103,8 +136,7 @@ import numpy as pd
 import pandas as np
 def foo():
     print("bar")
-`
-
+`;
 
 let pythonClassBody = `
 #------------------------------------
@@ -139,5 +171,32 @@ shubham = pickle.loads('./shubham.pkl')
 #------------------------------------
 
 
-`
+`;
 
+let skills = "";
+info.skills.forEach((skill) => {
+  skills += "• " + skill + "\n";
+});
+
+let pythonInfo = `
+>>> print(shubham)
+${info.firstName} ${info.lastName}
+
+>>> shubham.getContactDetails()
+Feel free to reach me out at ${info.contact}
+
+>>> shubham.getLocationDetails()
+I current reside in ${info.location}, India
+
+>>> shubham.getSkills()
+Following are my skills
+${skills}
+`;
+
+let mailInputInfo = [
+  "Hello world! What is your name?",
+  "Enter the subject of the email:",
+  "Enter the body of the email",
+];
+
+let mailInputFields = ["senderName", "subject", "body"];
