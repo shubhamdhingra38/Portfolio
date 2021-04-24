@@ -52,8 +52,13 @@ class Terminal {
       this.active = false;
       this.commands["python"].call(this);
     } else if (textEntered.startsWith("./")) {
-      this.commands["./"].call(this);
-      this.inputMode = true;
+      let fileName = textEntered.split(" ")[0].slice(2);
+      if (fileName === "email_me.sh" && this.currentDirectory === 'contact') {
+        this.commands["./"].call(this);
+        this.inputMode = true;
+      } else{
+        this.showInvalid(textEntered);
+      }
     } else if (this.commands[textEntered]) {
       this.commands[textEntered].call(this);
     } else if (textEntered.startsWith("cd ")) {
