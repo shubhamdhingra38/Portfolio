@@ -168,7 +168,7 @@ input {
   transition: background-color 0.5s ease;
   transition: transform 0.25s ease;
   border-color: rgb(0, 255, 21);
-  transform: scale(1.05, 1.05);
+  transform: scale(1.025, 1.025);
   background-color: #000;
   cursor: pointer;
 }
@@ -180,17 +180,15 @@ input {
 }
 
 .showcase {
-  top: 85px;
-  margin-bottom: 100px;
-
-  left: 50px;
-  position: relative;
+  padding: 15px;
+  margin-top: 50px;
+  margin-bottom: 50px;
   height: 350px;
 }
 
+
 .showcase-img {
   display: block;
-  position: absolute;
   margin-left: auto;
   margin-right: auto;
   max-height: 350px;
@@ -200,11 +198,8 @@ input {
 }
 
 .showcase-img:hover {
-  z-index: 100 !important;
   transition: box-shadow 0.5s ease;
   box-shadow: 2px 2px 15px green;
-  transition: transform 0.35s ease;
-  transform: scale(1.5, 1.5);
 }
 
 .project-container {
@@ -276,6 +271,28 @@ input {
   display: none;
 }
 
+
+.prev-btn, .next-btn{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 16px;
+  height: 50px;
+  color: rgb(0, 255, 42);
+  width: 100px;
+  font-size: large;
+  background: rgba(34, 34, 32, 0.925);
+  outline: none;
+  border: 2px solid green;
+  border-radius: 5px;
+}
+.prev-btn:hover, .next-btn:hover{
+  transform: scale(1.10, 1.10);
+  background: black;
+  border: 2px dashed green;
+}
+
+
 @media only screen and (min-width: 768px) {
   .pre-name {
     color: white;
@@ -288,12 +305,6 @@ input {
   }
 }
 
-@media (max-width: 1024px) and (min-width: 768px) {
-  .showcase {
-    top: 0px;
-    left: 20px;
-  }
-}
 
 @media only screen and (max-width: 767px) {
   .pre-name {
@@ -317,7 +328,11 @@ input {
     display: none !important;
     top: 0px;
     margin-bottom: 0px;
-    left: 20px;
+  }
+
+  .prev-btn, .next-btn {
+    display: none;
+
   }
 
   .project {

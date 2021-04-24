@@ -1,5 +1,6 @@
 let terminalText = document.getElementById("terminal-text");
 var i = 0;
+var index = 0;
 
 let emailDetails = {
   senderName: "",
@@ -18,6 +19,7 @@ class Terminal {
     this.directoryContents = mainDirectory;
     this.lastEnteredText = "";
     this.inputMode = false;
+    this.intervalRemoval = null;
   }
 
   createNextLine() {
@@ -170,7 +172,7 @@ let ls = new Command(
       let val = ele.name;
       if (ele.isLink) {
         terminal.addDiv(`
-            <a href="${ele.link}" target="_blank" style='cursor: pointer;  font-weight: bold;' class='fancy ls-result'>
+            <a href="#" target="_blank" style='cursor: pointer;  font-weight: bold;' class='fancy ls-result'>
             ${val}\t</a>`);
       } else {
         terminal.addDiv(
@@ -251,7 +253,8 @@ let cd = new Command("Change Directory", function (terminal, dirName) {
       projectsDirectory.forEach((project) => {
         if (project.name == dirName) {
           found = true;
-          // window.open(project.link, "_blank")
+
+          index += 1;
 
           let tags = project.tags.map((tag) => {
             return `<p class="tag">${tag}</p>`;
@@ -260,18 +263,16 @@ let cd = new Command("Change Directory", function (terminal, dirName) {
 
           let imageElements = project.images.map((imageSrc, index) => {
             return `
-                <img class="showcase-img" style="z-index:${
-                  project.images.length - index
-                }; left:${index * 20}px; bottom:${
-              index * 30
-            }px;" src="${imageSrc}" alt=""></img>
-              `;
+            <img class="showcase-img" src="${imageSrc}" alt="Project Demo">
+            `;
           });
+
+          imageElements = imageElements.join('')
+          console.log(imageElements)
 
           $("#terminal").append(
             `<div class="project-container">
               
-              <a href="${project.link}" target="_blank" style="text-decoration:none">
               <div class="project">
                   <div class="project-header">
                     <p class="project-title">${project.name}</p>
@@ -284,7 +285,7 @@ let cd = new Command("Change Directory", function (terminal, dirName) {
                   <p class="project-desc">${project.desc}</p>
                   
                   <div class="showcase-div">
-                    <div class="showcase">
+                    <div class="showcase siema${index}">
                       ${imageElements}
                     </div>
                     <div class="video-showcase">
@@ -293,14 +294,28 @@ let cd = new Command("Change Directory", function (terminal, dirName) {
                       </iframe>
                     </div>
                   </div>
+
+
+                  <button class="prev-btn prev${index}"><i class="fas fa-arrow-left"></i></button>
+                  <button class="next-btn next${index}"><i class="fas fa-arrow-right"></i></button>
                   <p>Tech stack:</p>
                   <div class="tags">
                     ${tagsElement}
                   </div>
               </div>
-              </a>
             </div>`
           );
+          const mySiema = new Siema({
+            selector: `.siema${index}`,
+            loop: true,
+            duration: 500,
+          });
+          document
+            .querySelector(`.prev${index}`)
+            .addEventListener("click", () => mySiema.prev());
+          document
+            .querySelector(`.next${index}`)
+            .addEventListener("click", () => mySiema.next());
         }
       });
     }
