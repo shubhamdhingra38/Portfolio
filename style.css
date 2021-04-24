@@ -147,6 +147,135 @@ input {
   text-shadow: 0 0 2px #00cc00, 0 0 5px #00cc00;
 }
 
+.ls-result {
+  margin-left: 20px !important;
+  margin-right: 20px !important;
+  line-height: 25px;
+}
+
+.project {
+  padding: 5px 7px;
+  background-color: rgba(187, 187, 187, 0.25);
+  width: 60vw;
+  margin-left: auto;
+  margin-right: auto;
+  height: auto;
+  border: #ffffff solid 2px;
+  text-decoration: none;
+}
+
+.project:hover {
+  transition: background-color 0.5s ease;
+  transition: transform 0.25s ease;
+  border-color: rgb(0, 255, 21);
+  transform: scale(1.05, 1.05);
+  background-color: #000;
+  cursor: pointer;
+}
+
+.project-title {
+  text-align: center;
+  color: rgb(0, 255, 21);
+  font-weight: bolder;
+}
+
+.showcase {
+  top: 85px;
+  margin-bottom: 100px;
+
+  left: 50px;
+  position: relative;
+  height: 350px;
+}
+
+.showcase-img {
+  display: block;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  max-height: 350px;
+  border-radius: 10px;
+  border: 2px solid rgb(0, 0, 0);
+  max-width: 50vw;
+}
+
+.showcase-img:hover {
+  z-index: 100 !important;
+  transition: box-shadow 0.5s ease;
+  box-shadow: 2px 2px 15px green;
+  transition: transform 0.35s ease;
+  transform: scale(1.5, 1.5);
+}
+
+.project-container {
+  bottom: 50px;
+  right: 50px;
+  display: block;
+  justify-content: space-around;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tag {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgb(7, 182, 16);
+  border-radius: 3px 0 0 3px;
+  color: rgba(102, 255, 0, 0.514);
+  display: inline-block;
+  height: 26px;
+  line-height: 26px;
+  padding: 0 20px 0 23px;
+  position: relative;
+  margin: 0 10px 10px 0;
+  text-decoration: none;
+  -webkit-transition: color 0.2s;
+}
+
+.tag:hover {
+  background-color: rgb(7, 182, 16);
+  color: white;
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid white;
+  margin-left: 0px;
+}
+
+.menu-btns {
+  color: white;
+  font-size: large;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.close-btn {
+  padding: 5px;
+}
+
+.close-btn:hover {
+  color: white;
+  background: red;
+}
+
+.min-btn, .max-btn{
+  padding: 5px;
+}
+
+.min-btn:hover, .max-btn:hover{
+  background: rgb(128, 118, 118);
+}
+
+
+
+.video-showcase {
+  display: none;
+}
+
 @media only screen and (min-width: 768px) {
   .pre-name {
     color: white;
@@ -156,6 +285,13 @@ input {
     font-size: 0.8rem;
     animation: changecolor 2s infinite;
     text-shadow: 0 0 2px #00cc00, 0 0 5px #00cc00;
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 768px) {
+  .showcase {
+    top: 0px;
+    left: 20px;
   }
 }
 
@@ -170,75 +306,29 @@ input {
     margin-left: auto;
     margin-right: auto;
   }
-}
 
-.ls-result {
-  margin-left: 20px !important;
-  margin-right: 20px !important;
-  line-height: 25px;
-}
+  .project-container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
-.project {
-  padding: 5px 20px;
-  background-color: rgba(187, 187, 187, 0.25);
-  width: 350px;
-  height: 350px;
-  border: #ffffff solid 2px;
-  text-decoration: none;
-}
+  .showcase {
+    display: none !important;
+    top: 0px;
+    margin-bottom: 0px;
+    left: 20px;
+  }
 
-.project:hover {
-  transition: background-color 0.25s ease;
-  transition: transform 0.5s ease;
-  border-color: rgb(0, 255, 21);
-  transform: scale(1.05, 1.05);
-  background-color: #000;
-  cursor: pointer;
-}
-
-.project-title {
-  text-align: center;
-  color: rgb(0, 255, 21);
-  font-weight: bolder;
-}
-
-.project > img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 90%;
-  max-height: 200px;
-}
-
-.project-container {
-  margin-left: 50px;
-  margin-right: 50px;
-  display: flex;
-  justify-content: space-around;
-}
-
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-
-.tag {
-  background: rgba(0, 0, 0, 0.25);
-  border-radius: 3px 0 0 3px;
-  color: rgba(102, 255, 0, 0.514);
-  display: inline-block;
-  height: 26px;
-  line-height: 26px;
-  padding: 0 20px 0 23px;
-  position: relative;
-  margin: 0 10px 10px 0;
-  text-decoration: none;
-  -webkit-transition: color 0.2s;
-}
-
-
-.tag:hover {
-  background-color: rgb(16, 139, 22);
-  color: white;
+  .project {
+    width: 90vw;
+  }
+  .showcase-div {
+    display: block !important;
+  }
+  .video-showcase {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+  }
 }

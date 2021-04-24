@@ -53,10 +53,10 @@ class Terminal {
       this.commands["python"].call(this);
     } else if (textEntered.startsWith("./")) {
       let fileName = textEntered.split(" ")[0].slice(2);
-      if (fileName === "email_me.sh" && this.currentDirectory === 'contact') {
+      if (fileName === "email_me.sh" && this.currentDirectory === "contact") {
         this.commands["./"].call(this);
         this.inputMode = true;
-      } else{
+      } else {
         this.showInvalid(textEntered);
       }
     } else if (this.commands[textEntered]) {
@@ -258,20 +258,48 @@ let cd = new Command("Change Directory", function (terminal, dirName) {
           });
           let tagsElement = tags.join("\n");
 
+          let imageElements = project.images.map((imageSrc, index) => {
+            return `
+                <img class="showcase-img" style="z-index:${
+                  project.images.length - index
+                }; left:${index * 20}px; bottom:${
+              index * 30
+            }px;" src="${imageSrc}" alt=""></img>
+              `;
+          });
+
           $("#terminal").append(
             `<div class="project-container">
-            <a href="${project.link}" target="_blank" style="text-decoration:none">
-            <div class="project">
-                <p class="project-title">${project.name}</p>
-                <p class="project-desc">${project.desc}</p>
-                <img src="${project.image}" alt="">
-                <p>Tech stack:</p>
-                <div class="tags">
-                  ${tagsElement}
-                </div>
-            </div>
-            </a>
-        </div>`
+              
+              <a href="${project.link}" target="_blank" style="text-decoration:none">
+              <div class="project">
+                  <div class="project-header">
+                    <p class="project-title">${project.name}</p>
+                    <div class="menu-btns">
+                      <span class="min-btn">-</span>
+                      <span class="max-btn">□</span>
+                      <span class="close-btn">X</span>
+                    </div>
+                  </div>
+                  <p class="project-desc">${project.desc}</p>
+                  
+                  <div class="showcase-div">
+                    <div class="showcase">
+                      ${imageElements}
+                    </div>
+                    <div class="video-showcase">
+                      <iframe width="420" height="315"
+                          src="${project.video}">
+                      </iframe>
+                    </div>
+                  </div>
+                  <p>Tech stack:</p>
+                  <div class="tags">
+                    ${tagsElement}
+                  </div>
+              </div>
+              </a>
+            </div>`
           );
         }
       });
@@ -335,7 +363,7 @@ class Project {
     this.name = info.name;
     this.desc = info.desc;
     this.link = info.link;
-    this.image = info.image;
+    this.images = info.images;
   }
 }
 

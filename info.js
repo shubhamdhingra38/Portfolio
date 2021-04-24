@@ -63,11 +63,11 @@ let projectsDirectory = [
       "Uses NLP for making the process of grading short answer quizzes in a largely automated fashion. Also includes plagiarism detection.",
     isLink: true,
     link: "https://github.com/shubhamdhingra38/Quick-Grader",
-    image:
-      "https://github.com/shubhamdhingra38/Quick-Grader/blob/master/screenshots/addques.png?raw=true",
+    images: ['./static/quickgrader0.png', './static/quickgrader1.png', './static/quickgrader2.png', './static/quickgrader3.png',],
     tags: [
         'ReactJS', 'Django', 'Django Rest Framework', 'MaterialUI', 'Machine Learning', 'NLP'
-    ]
+    ],
+    video: 'https://www.youtube.com/embed/PfjNndQzO3c'
   },
   {
     name: "Collaborative_Code_Editing",
@@ -75,11 +75,12 @@ let projectsDirectory = [
       "A web application which uses sockets to enable real-time code sharing, chatting and canvas sketching all at once.",
     isLink: true,
     link: "https://github.com/shubhamdhingra38/Live-Collaborative-Code-Editing",
-    image:
-      "https://raw.githubusercontent.com/shubhamdhingra38/Live-Collaborative-Code-Editing/master/Screenshots/Screenshot.png",
+    images: ['./static/collab.png'],
     tags: [
         'Django', 'Django Channels', 'Django Rest Framework', 'HTML/CSS', 'Boostrap'
-    ]
+    ],
+
+    video: "https://www.youtube.com/embed/Tez2jAOlcM8"
   },
   {
     name: "QFiction",
@@ -87,11 +88,11 @@ let projectsDirectory = [
     desc:
       "Used a pre-trained BERT model on SQuAD and performed fine-tuning on several fiction novels corpus. It allows searching for an answer to a given question in the reference text.",
     link: "https://github.com/shubhamdhingra38/QFiction",
-    image:
-      "https://raw.githubusercontent.com/shubhamdhingra38/QFiction/master/screenshots/Screenshot%202020-09-23%20at%207.07.21%20AM.png",
+    images: ['./static/qfiction0.png', './static/qfiction1.png', './static/qfiction2.png', './static/qfiction3.png', './static/qfiction4.png'],
     tags: [
         'HTML/CSS', 'Bootstrap', 'Python', 'Flask', 'NLP'
-    ]
+    ],
+    video: 'https://www.youtube.com/embed/N6OQ2bsTO2c'
   },
 
   {
@@ -101,11 +102,11 @@ let projectsDirectory = [
     techStack: ["JavaScript", "p5.js", "Bootstrap"],
     isLink: true,
     link: "https://github.com/shubhamdhingra38/Visual-Algorithms",
-    image:
-      "https://raw.githubusercontent.com/shubhamdhingra38/Visual-Algorithms/master/main/static/main/images/TSP.png",
+    images: ['./static/dijkstra_ssp.png', './static/graph_traversal.png'],
     tags: [
         'HTML/CSS', 'JavaScript', 'p5.js', 'Bootstrap'
-    ]
+    ],
+    video: 'https://www.youtube.com/embed/6L2p9XwU7K0'
   },
 ];
 
