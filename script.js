@@ -20,6 +20,7 @@ class Terminal {
     this.lastEnteredText = "";
     this.inputMode = false;
     this.intervalRemoval = null;
+    this.windowID = 0;
   }
 
   createNextLine() {
@@ -82,7 +83,6 @@ class Terminal {
 
   createNextCursor() {
     if (this.inputMode) {
-      alert("yes input mode");
       this.terminal.append(`
       <input id="terminal-text-active" autocapitalize="off" autocomplete="off" type="text" value="" style="width: 100%; text-decoration: none>">`);
       document.getElementById("terminal-text-active").focus();
@@ -164,25 +164,24 @@ let help = new Command("Get a list of available commands", (terminal) => {
   });
 });
 
-let ls = new Command(
-  "Get a list of available directories",
-  function (terminal) {
-    if (terminal.lastElementChild) terminal.lastElementChild.id = "";
-    terminal.directoryContents.forEach((ele) => {
-      let val = ele.name;
-      if (ele.isLink) {
-        terminal.addDiv(`
+let ls = new Command("Get a list of available directories", function (
+  terminal
+) {
+  if (terminal.lastElementChild) terminal.lastElementChild.id = "";
+  terminal.directoryContents.forEach((ele) => {
+    let val = ele.name;
+    if (ele.isLink) {
+      terminal.addDiv(`
             <a href="#" target="_blank" style='cursor: pointer;  font-weight: bold;' class='fancy ls-result'>
             ${val}\t</a>`);
-      } else {
-        terminal.addDiv(
-          `<span class='ls-result style='color: rgba(200, 200, 200, 1) !important;'>${val}\t</span>`
-        );
-      }
-    });
-    terminal.addLine("\n");
-  }
-);
+    } else {
+      terminal.addDiv(
+        `<span class='ls-result style='color: rgba(200, 200, 200, 1) !important;'>${val}\t</span>`
+      );
+    }
+  });
+  terminal.addLine("\n");
+});
 
 //returns true if successful operation otherwise false
 let cat = new Command("List file contents", function (terminal, fName) {
@@ -267,19 +266,19 @@ let cd = new Command("Change Directory", function (terminal, dirName) {
             `;
           });
 
-          imageElements = imageElements.join('')
-          console.log(imageElements)
+          imageElements = imageElements.join("");
+          console.log(imageElements);
 
           $("#terminal").append(
-            `<div class="project-container">
+            `<div class="project-container" id="showcase-${index}">
               
               <div class="project">
                   <div class="project-header">
                     <p class="project-title">${project.name}</p>
-                    <div class="menu-btns">
+                    <div class="menu-btns" >
                       <span class="min-btn">-</span>
                       <span class="max-btn">□</span>
-                      <span class="close-btn">X</span>
+                      <span class="close-btn" id="showcase-close-${index}">X</span>
                     </div>
                   </div>
                   <p class="project-desc">${project.desc}</p>
@@ -305,6 +304,9 @@ let cd = new Command("Change Directory", function (terminal, dirName) {
               </div>
             </div>`
           );
+
+          document.getElementById(`showcase-close-${index}`).onclick = destroy;
+
           const mySiema = new Siema({
             selector: `.siema${index}`,
             loop: true,
@@ -447,11 +449,11 @@ $(document).ready(() => {
 });
 
 window.onload = () => {
-  // var formData = new FormData();
-  // formData.append("service_id", "service_7f04whc");
-  // formData.append("template_id", "template_ud54ccf");
-  // formData.append("user_id", "user_PVfFPcFv9TqO6mBtcMQfe");
-  // formData.append("from_name", "XYZ")
-  // formData.append("to_name", "ABC")
-  // formData.append("message", "lorem ipsum dolor")
 };
+
+function destroy(e) {
+  let id = e.target.id;
+  id = id.split("-").splice(-1);
+  let element = document.getElementById(`showcase-${id}`);
+  element.parentNode.removeChild(element);
+}
