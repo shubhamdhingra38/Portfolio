@@ -59,54 +59,74 @@ let mainDirectory = [
 let projectsDirectory = [
   {
     name: "QuickGrader",
-    desc:
-      "Uses NLP for making the process of grading short answer quizzes in a largely automated fashion. Also includes plagiarism detection.",
+    desc: "Uses NLP for making the process of grading short answer quizzes in a largely automated fashion. Also includes plagiarism detection.",
     isLink: true,
     link: "https://github.com/shubhamdhingra38/Quick-Grader",
-    images: ['./static/quickgrader0.png', './static/quickgrader1.png', './static/quickgrader2.png', './static/quickgrader3.png',],
-    tags: [
-        'ReactJS', 'Django', 'Django Rest Framework', 'MaterialUI', 'Machine Learning', 'NLP'
+    images: [
+      "./static/grade_manual.png",
+      "./static/home.png",
+      "./static/account.png",
+      "./static/register0.png",
+      "./static/create_test1.png",
+      "./static/create_test2.png",
+      "./static/plagiarism1.png",
+      "./static/plagiarism2.png",
     ],
-    video: 'https://www.youtube.com/embed/PfjNndQzO3c'
+    tags: [
+      "ReactJS",
+      "Django",
+      "Django Rest Framework",
+      "MaterialUI",
+      "Machine Learning",
+      "NLP",
+    ],
+    video: "https://www.youtube.com/embed/PfjNndQzO3c",
   },
   {
     name: "Collaborative_Code_Editing",
-    desc:
-      "A web application which uses sockets to enable real-time code sharing, chatting and canvas sketching all at once.",
+    desc: "A web application which uses sockets to enable real-time code sharing, chatting and canvas sketching all at once.",
     isLink: true,
     link: "https://github.com/shubhamdhingra38/Live-Collaborative-Code-Editing",
-    images: ['./static/collab.png'],
+    images: ["./static/collab.png"],
     tags: [
-        'Django', 'Django Channels', 'Django Rest Framework', 'HTML/CSS', 'Boostrap'
+      "Django",
+      "Django Channels",
+      "Django Rest Framework",
+      "HTML/CSS",
+      "Boostrap",
     ],
-
-    video: "https://www.youtube.com/embed/Tez2jAOlcM8"
+    video: "https://www.youtube.com/embed/Tez2jAOlcM8",
   },
   {
     name: "QFiction",
     isLink: true,
-    desc:
-      "Used a pre-trained BERT model on SQuAD and performed fine-tuning on several fiction novels corpus. It allows searching for an answer to a given question in the reference text.",
+    desc: "Used a pre-trained BERT model on SQuAD and performed fine-tuning on several fiction novels corpus. It allows searching for an answer to a given question in the reference text.",
     link: "https://github.com/shubhamdhingra38/QFiction",
-    images: ['./static/qfiction0.png', './static/qfiction1.png', './static/qfiction2.png', './static/qfiction3.png', './static/qfiction4.png'],
-    tags: [
-        'HTML/CSS', 'Bootstrap', 'Python', 'Flask', 'NLP'
+    images: [
+      "./static/qfiction0.png",
+      "./static/qfiction1.png",
+      "./static/qfiction2.png",
+      "./static/qfiction3.png",
+      "./static/qfiction4.png",
     ],
-    video: 'https://www.youtube.com/embed/N6OQ2bsTO2c'
+    tags: ["HTML/CSS", "Bootstrap", "Python", "Flask", "NLP"],
+    video: "https://www.youtube.com/embed/N6OQ2bsTO2c",
   },
 
   {
     name: "Visual_Algorithms",
-    desc:
-      "This project provides an intuitive view of how algorithms works, which is by visualizing them and looking at what operations are performed at every step.",
+    desc: "This project provides an intuitive view of how algorithms works, which is by visualizing them and looking at what operations are performed at every step.",
     techStack: ["JavaScript", "p5.js", "Bootstrap"],
     isLink: true,
     link: "https://github.com/shubhamdhingra38/Visual-Algorithms",
-    images: ['./static/dijkstra_ssp.png', './static/graph_traversal.png'],
-    tags: [
-        'HTML/CSS', 'JavaScript', 'p5.js', 'Bootstrap'
+    images: [
+      "./static/TSP.png",
+      "./static/dijkstra_ssp.png",
+      "./static/graph_traversal.png",
+      "./static/Genetic.png",
     ],
-    video: 'https://www.youtube.com/embed/6L2p9XwU7K0'
+    tags: ["HTML/CSS", "JavaScript", "p5.js", "Bootstrap"],
+    video: "https://www.youtube.com/embed/6L2p9XwU7K0",
   },
 ];
 

@@ -65,7 +65,7 @@ class Terminal {
     } else if (this.commands[textEntered]) {
       this.commands[textEntered].call(this);
     } else if (textEntered.startsWith("cd ")) {
-      let dir = textEntered.split(" ")[1];
+      let dir = textEntered.split(" ").splice(1).join(" ");
       this.commands["cd"].call(terminal, dir);
     } else if (textEntered.trim(" ") == "") {
       //allow empty line
@@ -228,7 +228,7 @@ let python = new Command("Python shell", function (terminal) {
 });
 
 let cd = new Command("Change Directory", function (terminal, dirName) {
-  console.log("Changed directory to:", dirName);
+  console.log("Changing directory to:", dirName);
   if (dirName == "projects" || dirName == "projects/") {
     terminal.changeDirectory("projects", projectsDirectory);
   } else if (dirName == "contact" || dirName == "contact/") {
@@ -301,6 +301,7 @@ let cd = new Command("Change Directory", function (terminal, dirName) {
                   <div class="tags">
                     ${tagsElement}
                   </div>
+                  <p>Check it out on <span><a class="github-link" target='_blank'href=${project.link}>GitHub</a></span></p>
               </div>
             </div>`
           );
@@ -448,8 +449,7 @@ $(document).ready(() => {
   document.getElementById("terminal-text-active").focus();
 });
 
-window.onload = () => {
-};
+window.onload = () => {};
 
 function destroy(e) {
   let id = e.target.id;

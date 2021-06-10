@@ -166,9 +166,9 @@ input {
 
 .project:hover {
   transition: background-color 0.5s ease;
-  transition: transform 0.25s ease;
+  /* transition: transform 0.5s ease; */
   border-color: rgb(0, 255, 21);
-  transform: scale(1.025, 1.025);
+  /* transform: scale(1.025, 1.025); */
   background-color: #000;
   cursor: pointer;
 }
@@ -186,12 +186,12 @@ input {
   height: 350px;
 }
 
-
 .showcase-img {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  max-height: 350px;
+  margin-top: auto;
+  max-height: 50vh;
   border-radius: 10px;
   border: 2px solid rgb(0, 0, 0);
   max-width: 50vw;
@@ -257,22 +257,22 @@ input {
   background: red;
 }
 
-.min-btn, .max-btn{
+.min-btn,
+.max-btn {
   padding: 5px;
 }
 
-.min-btn:hover, .max-btn:hover{
+.min-btn:hover,
+.max-btn:hover {
   background: rgb(128, 118, 118);
 }
-
-
 
 .video-showcase {
   display: none;
 }
 
-
-.prev-btn, .next-btn{
+.prev-btn,
+.next-btn {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -286,12 +286,12 @@ input {
   border: 2px solid green;
   border-radius: 5px;
 }
-.prev-btn:hover, .next-btn:hover{
-  transform: scale(1.10, 1.10);
+.prev-btn:hover,
+.next-btn:hover {
+  transform: scale(1.1, 1.1);
   background: black;
   border: 2px dashed green;
 }
-
 
 @media only screen and (min-width: 768px) {
   .pre-name {
@@ -304,7 +304,6 @@ input {
     text-shadow: 0 0 2px #00cc00, 0 0 5px #00cc00;
   }
 }
-
 
 @media only screen and (max-width: 767px) {
   .pre-name {
@@ -330,9 +329,9 @@ input {
     margin-bottom: 0px;
   }
 
-  .prev-btn, .next-btn {
+  .prev-btn,
+  .next-btn {
     display: none;
-
   }
 
   .project {
@@ -346,4 +345,16 @@ input {
     justify-content: center;
     align-content: center;
   }
+}
+
+.github-link {
+  padding: 5px;
+  color: rgb(42, 157, 165);
+  text-decoration: none !important;
+  font-weight: 600;
+}
+
+.github-link:hover {
+  border: 2px solid rgb(255, 0, 0);
+  background-color: rgb(71, 69, 69);
 }
