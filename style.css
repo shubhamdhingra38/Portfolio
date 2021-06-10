@@ -151,6 +151,8 @@ input {
   margin-left: 20px !important;
   margin-right: 20px !important;
   line-height: 25px;
+  /* line-width: 25px; */
+  overflow-wrap: normal;
 }
 
 .project {

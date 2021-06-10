@@ -171,18 +171,23 @@ let ls = new Command("Get a list of available directories", function (
   terminal.directoryContents.forEach((ele) => {
     let val = ele.name;
     if (ele.isLink) {
-      let a = document.createElement('a');
-      a.style = 'cursor: pointer;  font-weight: bold;'
-      a.className = 'fancy ls-result';
-      var link = document.createTextNode(val); 
-      a.appendChild(link);  
-      a.title = "This is Link";  
-      a.href = "#"; 
-      terminal.addDiv(a);
-      a.onclick = ele.handleClick
+      let a = document.createElement("a");
+      a.style = "cursor: pointer;  font-weight: bold;";
+      a.className = "fancy";
+      // a.classList = ['fancy', 'ls-result']
+      var link = document.createTextNode(val + "\t");
+      a.appendChild(link);
+      a.title = val;
+      a.href = "#";
+      let span = document.createElement("span");
+      span.appendChild(a);
+      // span.appendChild(link)
+      span.className = "ls-result";
+      a.onclick = ele.handleClick;
+      terminal.addDiv(span);
     } else {
       terminal.addDiv(
-        `<span class='ls-result style='color: rgba(200, 200, 200, 1) !important;'>${val}\t</span>`
+        `<span class='ls-result' style='color: rgba(200, 200, 200, 1) !important;'>${val}\t</span>`
       );
     }
   });
