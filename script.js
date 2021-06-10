@@ -171,9 +171,15 @@ let ls = new Command("Get a list of available directories", function (
   terminal.directoryContents.forEach((ele) => {
     let val = ele.name;
     if (ele.isLink) {
-      terminal.addDiv(`
-            <a href="#" target="_blank" style='cursor: pointer;  font-weight: bold;' class='fancy ls-result'>
-            ${val}\t</a>`);
+      let a = document.createElement('a');
+      a.style = 'cursor: pointer;  font-weight: bold;'
+      a.className = 'fancy ls-result';
+      var link = document.createTextNode(val); 
+      a.appendChild(link);  
+      a.title = "This is Link";  
+      a.href = "#"; 
+      terminal.addDiv(a);
+      a.onclick = ele.handleClick
     } else {
       terminal.addDiv(
         `<span class='ls-result style='color: rgba(200, 200, 200, 1) !important;'>${val}\t</span>`

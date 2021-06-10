@@ -33,21 +33,37 @@ let mainDirectory = [
   },
   {
     name: "projects/",
+    handleClick() {
+      $("#terminal-text-active").val('cd projects/');
+      terminal.createNextLine();
+      $("#terminal-text-active").val('ls');
+      terminal.createNextLine();
+    },
     isLink: true,
   },
   {
     name: "contact/",
+    handleClick() {
+      $("#terminal-text-active").val('cd contact/');
+      terminal.createNextLine();
+    },
     isLink: true,
   },
   {
     name: "resume.pdf",
     isLink: true,
     link: resumeLink,
+    handleClick() {
+      window.open(resumeLink);
+    },
   },
   {
     name: "github",
     isLink: true,
     link: githubLink,
+    handleClick() {
+      window.open(githubLink);
+    },
   },
   {
     name: "shubham.pkl",
@@ -55,6 +71,12 @@ let mainDirectory = [
     accessDenied: true, //read permission
   },
 ];
+
+
+function projectHandleClick(name){
+  $("#terminal-text-active").val(`cd ${name}`);
+  terminal.createNextLine();
+}
 
 let projectsDirectory = [
   {
@@ -81,6 +103,9 @@ let projectsDirectory = [
       "NLP",
     ],
     video: "https://www.youtube.com/embed/PfjNndQzO3c",
+    handleClick: function() {
+      projectHandleClick("QuickGrader")
+    }
   },
   {
     name: "Collaborative_Code_Editing",
@@ -96,6 +121,9 @@ let projectsDirectory = [
       "Boostrap",
     ],
     video: "https://www.youtube.com/embed/Tez2jAOlcM8",
+    handleClick: function() {
+      projectHandleClick("Collaborative_Code_Editing")
+    }
   },
   {
     name: "QFiction",
@@ -111,6 +139,9 @@ let projectsDirectory = [
     ],
     tags: ["HTML/CSS", "Bootstrap", "Python", "Flask", "NLP"],
     video: "https://www.youtube.com/embed/N6OQ2bsTO2c",
+    handleClick: function() {
+      projectHandleClick("QFiction")
+    }
   },
 
   {
@@ -127,6 +158,9 @@ let projectsDirectory = [
     ],
     tags: ["HTML/CSS", "JavaScript", "p5.js", "Bootstrap"],
     video: "https://www.youtube.com/embed/6L2p9XwU7K0",
+    handleClick: function() {
+      projectHandleClick("Visual_Algorithms")
+    }
   },
 ];
 
