@@ -1,4 +1,4 @@
-let info = {
+let INFO = {
   firstName: "Shubham",
   lastName: "Dhingra",
   contact: "dhingra.shubham38@gmail.com",
@@ -9,20 +9,18 @@ let info = {
     "Java",
     "Django",
     "ReactJS",
-    "Web Scraping",
-    "Machine Learning",
-    "Deep Learning",
-    "Natural Language Processing",
     "Full Stack Web Development",
+    "AWS",
+    "Web Scraping",
     "Data Structures And Algorithms",
   ],
 };
 
-let resumeLink =
+let RESUME_LINK =
   "https://drive.google.com/file/d/1qLlfsaOC6vwpM5ZjZi67grcQ_oEbFBZJ/view";
-let githubLink = "https://github.com/shubhamdhingra38";
+let GITHUB_LINK = "https://github.com/shubhamdhingra38";
 
-let mainDirectory = [
+let MAIN_DIRECTORY = [
   {
     name: "about.txt",
     isLink: false,
@@ -52,33 +50,28 @@ let mainDirectory = [
   {
     name: "resume.pdf",
     isLink: true,
-    link: resumeLink,
+    link: RESUME_LINK,
     handleClick() {
-      window.open(resumeLink);
+      window.open(RESUME_LINK);
     },
   },
   {
     name: "github",
     isLink: true,
-    link: githubLink,
+    link: GITHUB_LINK,
     handleClick() {
-      window.open(githubLink);
+      window.open(GITHUB_LINK);
     },
   },
   {
-    name: "shubham.pkl",
+    name: `${INFO.firstName.toLowerCase()}_info.pkl`,
     isLink: false,
     accessDenied: true, //read permission
   },
 ];
 
 
-function projectHandleClick(name){
-  $("#terminal-text-active").val(`cd ${name}`);
-  terminal.createNextLine();
-}
-
-let projectsDirectory = [
+let PROJECTS_DIRECTORY = [
   {
     name: "QuickGrader",
     desc: "Uses NLP for making the process of grading short answer quizzes in a largely automated fashion. Also includes plagiarism detection.",
@@ -164,7 +157,7 @@ let projectsDirectory = [
   },
 ];
 
-let contactDirectory = [
+let CONTACT_DIRECTORY = [
   {
     name: "LinkedIn",
     isLink: true,
@@ -178,13 +171,13 @@ let contactDirectory = [
   },
 ];
 
-let aboutText = `
-Name: ${info.firstName} ${info.lastName}
-Contact: ${info.contact}
-Location: ${info.location}
+let ABOUT_TEXT = `
+Name: ${INFO.firstName} ${INFO.lastName}
+Contact: ${INFO.contact}
+Location: ${INFO.location}
 `;
 
-let scriptText = `
+let SCRIPT_TEXT = `
 #How to make people mad at you
 
 import numpy as pd
@@ -193,7 +186,7 @@ def foo():
     print("bar")
 `;
 
-let pythonClassBody = `
+let PYTHON_CLASS_BODY = `
 #------------------------------------
 
 class Person:
@@ -228,30 +221,27 @@ shubham = pickle.loads('./shubham.pkl')
 
 `;
 
-let skills = "";
-info.skills.forEach((skill) => {
-  skills += "• " + skill + "\n";
-});
 
-let pythonInfo = `
+
+let PYTHON_INFO = `
 >>> print(shubham)
-${info.firstName} ${info.lastName}
+${INFO.firstName} ${INFO.lastName}
 
 >>> shubham.getContactDetails()
-Feel free to reach me out at ${info.contact}
+Feel free to reach me out at ${INFO.contact}
 
 >>> shubham.getLocationDetails()
-I current reside in ${info.location}, India
+I current reside in ${INFO.location}, India
 
 >>> shubham.getSkills()
 Following are my skills
-${skills}
+${generateBulletPoints(INFO.skills)}
 `;
 
-let mailInputInfo = [
+let MAIL_INPUT_INFO = [
   "Hello world! What is your name?",
   "Enter the subject of the email:",
   "Enter the body of the email",
 ];
 
-let mailInputFields = ["senderName", "subject", "body"];
+let MAIL_INPUT_FIELDS = ["senderName", "subject", "body"];
