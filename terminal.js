@@ -57,6 +57,9 @@ class Terminal {
     } else if(command.startsWith("mkdir ")) {
       let directoryName = command.split(" ")[1];
       mkdir.execute(directoryName);
+    } else if(command.startsWith("touch ")) {
+      let fileName = command.split(" ")[1];
+      touch.execute(fileName);
     }
     else {
       this.showError(`${command} is not a valid command! Type "help" to see a list of valid commands.`)
