@@ -46,7 +46,7 @@ class Directory extends FileElement {
   getChildElement(elementName) {
     const indexOfElement = this.elements.map(element => element.name).indexOf(elementName);
     if (indexOfElement === -1) {
-      throw Error(`Directory "${this.name}/" does not have a child directory/file called "${elementName}"!`)
+      throw Error(`Directory "${this.name}" does not have a child directory/file called "${elementName}"!`)
     }
     const element = this.elements[indexOfElement];
     return element;

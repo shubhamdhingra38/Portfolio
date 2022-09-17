@@ -124,7 +124,7 @@ class Terminal {
     } else if (this.active) {
       this.terminal.append(`
               <div class="terminal-line">
-                  <p class="command-text">user@terminal:<span class="terminal-path">~</span>&nbsp;>&nbsp;</p>
+                  <p class="command-text">user@terminal:<span class="terminal-path">${this.currentDirectory.getFullPathFromRoot()}/</span>&nbsp;>&nbsp;</p>
                   <input autocapitalize="off" autocomplete="off" type="text" value="" style="width: 100%; text-decoration: none" id="terminal-text-active" class="terminal-text">
               </div>`);
 
@@ -155,10 +155,6 @@ class Terminal {
   reset() {
     console.log("Clearing terminal...");
     this.terminal.empty();
-  }
-
-  changeDirectory(directory) {
-    // this.currentDirectory = directory;
   }
 
   addChar(char) {
