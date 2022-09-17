@@ -4,6 +4,14 @@ class Command {
       this.description = description;
     }
     
+    static isCurrentDirectoryRelativeCommand(command) {
+      return command.startsWith('./');
+    }
+
+    static isRootRelativeCommand(command) {
+      return command.startsWith('/');
+    }
+
     /**
      * Abstract method
      */

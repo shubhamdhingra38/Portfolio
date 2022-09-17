@@ -8,12 +8,11 @@ let emailDetails = {
   body: "",
 };
 
-
-
 const terminal = new Terminal([]);
 let ls = new ListCommand(terminal, "ls command description");
 let cat = new CatCommand(terminal, "cat command description");
-
+let cd = new ChangeDirectoryCommand(terminal, "cd command description");
+let pwd = new PresentWorkingDirectoryCommand(terminal, "pwd description");
 
 const project = new Project(PROJECTS_DIRECTORY[3]);
 

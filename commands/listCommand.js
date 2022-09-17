@@ -6,12 +6,17 @@ class ListCommand extends Command {
     }
   }
 
+  /**
+   * List directory, current directory or given directory.
+   * Does not support listing nested directory yet.
+   * @param {string} directoryName Name of directory
+   */
   execute(directoryName) {
     this.resetLastElementID();
-
-    let elementsInDirectory;
     try {
+      let elementsInDirectory;
       if (directoryName) {
+        directoryName = Directory.removeTrailingSlash(directoryName);
         elementsInDirectory = this.terminal.getElementsInDirectory(directoryName);
       } else {
         elementsInDirectory = this.terminal.currentDirectory.listDirectory();

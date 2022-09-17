@@ -51,8 +51,11 @@ class Terminal {
       ls.execute(fileName);
     } else if (command.startsWith("cd ")) {
       let directoryName = command.split(" ")[1];
-      alert("change dir");
-    } else {
+      cd.execute(directoryName);
+    } else if (command.startsWith("pwd ") || command === "pwd") {
+      pwd.execute();
+    } 
+    else {
       this.showError(`${command} is not a valid command! Type "help" to see a list of valid commands.`)
     }
     // this.commands["ls"].call(this);
@@ -162,6 +165,10 @@ class Terminal {
   getElementsInDirectory(directoryName) {
     const directory = this.currentDirectory.getChildDirectory(directoryName);
     return directory.listDirectory();
+  }
+
+  setCurrentDirectory(directory) {
+    this.currentDirectory = directory;
   }
 
   showError(errorMessage) {

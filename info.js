@@ -25,7 +25,7 @@ const projectsDirectory = new Directory("projects/");
 projectsDirectory.addElement(new SimpleFile("test.txt"));
 projectsDirectory.addElement(new SimpleFile("test2.txt"));
 const normalDirectory = new Directory("normal/");
-
+normalDirectory.addElement(new SimpleFile("abc.txt"));
 
 const mainDirectory = new Directory("/");
 mainDirectory.addElement(new SimpleFile("about.txt"));
