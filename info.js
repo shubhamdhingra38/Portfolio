@@ -20,55 +20,19 @@ let RESUME_LINK =
   "https://drive.google.com/file/d/1qLlfsaOC6vwpM5ZjZi67grcQ_oEbFBZJ/view";
 let GITHUB_LINK = "https://github.com/shubhamdhingra38";
 
-let MAIN_DIRECTORY = [
-  {
-    name: "about.txt",
-    isLink: false,
-  },
-  {
-    name: "script.py",
-    isLink: false,
-  },
-  {
-    name: "projects/",
-    handleClick() {
-      $("#terminal-text-active").val('cd projects/');
-      terminal.createNextLine();
-      $("#terminal-text-active").val('ls');
-      terminal.createNextLine();
-    },
-    isLink: true,
-  },
-  {
-    name: "contact/",
-    handleClick() {
-      $("#terminal-text-active").val('cd contact/');
-      terminal.createNextLine();
-    },
-    isLink: true,
-  },
-  {
-    name: "resume.pdf",
-    isLink: true,
-    link: RESUME_LINK,
-    handleClick() {
-      window.open(RESUME_LINK);
-    },
-  },
-  {
-    name: "github",
-    isLink: true,
-    link: GITHUB_LINK,
-    handleClick() {
-      window.open(GITHUB_LINK);
-    },
-  },
-  {
-    name: `${INFO.firstName.toLowerCase()}_info.pkl`,
-    isLink: false,
-    accessDenied: true, //read permission
-  },
-];
+
+const projectsDirectory = new Directory("projects/");
+projectsDirectory.addElement(new SimpleFile("test.txt"));
+projectsDirectory.addElement(new SimpleFile("test2.txt"));
+const normalDirectory = new Directory("normal/");
+
+
+const mainDirectory = new Directory("/");
+mainDirectory.addElement(new SimpleFile("about.txt"));
+mainDirectory.addElement(new SimpleFile("script.py"));
+mainDirectory.addElement(projectsDirectory);
+mainDirectory.addElement(normalDirectory);
+
 
 
 let PROJECTS_DIRECTORY = [

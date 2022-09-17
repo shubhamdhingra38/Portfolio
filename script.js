@@ -10,7 +10,10 @@ let emailDetails = {
 
 
 
-const terminal = new Terminal(commands);
+const terminal = new Terminal([]);
+let ls = new ListCommand(terminal, "ls command description");
+let cat = new CatCommand(terminal, "cat command description");
+
 
 const project = new Project(PROJECTS_DIRECTORY[3]);
 

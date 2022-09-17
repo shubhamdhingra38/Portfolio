@@ -42,6 +42,10 @@ p {
   color: white;
 }
 
+.error-terminal {
+  color: #ee0000
+}
+
 #terminal {
   border: none;
   background: transparent;
