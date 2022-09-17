@@ -60,6 +60,10 @@ class Terminal {
     } else if(command.startsWith("touch ")) {
       let fileName = command.split(" ")[1];
       touch.execute(fileName);
+    } else if(command === 'clear') {
+      clear.execute();
+    } else if (command === '') {
+      
     }
     else {
       this.showError(`${command} is not a valid command! Type "help" to see a list of valid commands.`)

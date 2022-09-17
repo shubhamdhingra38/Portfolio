@@ -121,7 +121,10 @@ class Directory extends FileElement {
     span.appendChild(a);
     span.className = "ls-result";
 
-    a.onclick = () => this.handleClick(this.getFullPathFromRoot());
+    a.onclick = () => {
+      this.handleClick(this.getFullPathFromRoot());
+      return false;
+    };
     return span;
   }
 }
