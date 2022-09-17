@@ -40,6 +40,7 @@ p {
 
 .pre-terminal {
   color: white;
+  text-shadow: 0 0 2px #ffffff, 0 0 2px #000000;
 }
 
 .error-terminal {

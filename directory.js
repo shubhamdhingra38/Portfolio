@@ -34,6 +34,11 @@ class Directory extends FileElement {
   removeElement(element) {
   }
 
+  hasElement(elementName) {
+    return this.elements.map(element => element.name).includes(elementName);
+  }
+
+
   listDirectory() {
     return this.elements;
   }

@@ -54,7 +54,10 @@ class Terminal {
       cd.execute(directoryName);
     } else if (command.startsWith("pwd ") || command === "pwd") {
       pwd.execute();
-    } 
+    } else if(command.startsWith("mkdir ")) {
+      let directoryName = command.split(" ")[1];
+      mkdir.execute(directoryName);
+    }
     else {
       this.showError(`${command} is not a valid command! Type "help" to see a list of valid commands.`)
     }
