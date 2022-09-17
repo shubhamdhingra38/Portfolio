@@ -1,10 +1,11 @@
 class CatCommand extends Command {
+  
   execute(fName) {
     let ok = false;
-    if (fName && fName != "") {
+    if (fName && fName !== "") {
       let name = fName.trimRight();
       let info = null;
-      this.terminal.directoryContents.forEach((ele) => {
+      this.terminal.getElementsInCurrentDirectory().forEach((ele) => {
         if (ele.name === name) {
           info = ele;
         }
@@ -26,7 +27,7 @@ class CatCommand extends Command {
     let name = fName || "";
     if (!ok) {
       //nothing found
-      this.terminal.addLine(`cat: ${name}: No such file`);
+      this.terminal.showError(`cat: ${name}: No such file`);
     }
   }
 }

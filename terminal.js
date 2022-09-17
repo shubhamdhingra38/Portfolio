@@ -162,8 +162,12 @@ class Terminal {
     this.terminal.append(char);
   }
 
+  getElementsInCurrentDirectory() {
+    return this.currentDirectory.listDirectory();
+  }
+
   getElementsInDirectory(directoryName) {
-    const directory = this.currentDirectory.getChildDirectory(directoryName);
+    const directory = this.currentDirectory.getNestedChildElementWhichShouldNotBeAFile(directoryName);
     return directory.listDirectory();
   }
 

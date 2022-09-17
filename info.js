@@ -27,6 +27,10 @@ projectsDirectory.addElement(new SimpleFile("test2.txt"));
 const normalDirectory = new Directory("normal/");
 normalDirectory.addElement(new SimpleFile("abc.txt"));
 
+const newDirectory = new Directory("test/");
+newDirectory.addElement(new SimpleFile("hello_world.txt"));
+normalDirectory.addElement(newDirectory);
+
 const mainDirectory = new Directory("/");
 mainDirectory.addElement(new SimpleFile("about.txt"));
 mainDirectory.addElement(new SimpleFile("script.py"));

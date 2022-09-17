@@ -4,7 +4,7 @@ class ChangeDirectoryCommand extends Command {
     if (Command.isCurrentDirectoryRelativeCommand(directoryName)) {
       directoryName = directoryName.slice(2);
     }
-    return this.terminal.currentDirectory.getChildDirectory(directoryName);
+    return this.terminal.currentDirectory.getNestedChildElementWhichShouldNotBeAFile(directoryName);
   }
 
   getDirectoryRelativeToRoot(directoryName) {
@@ -12,7 +12,7 @@ class ChangeDirectoryCommand extends Command {
       return mainDirectory;
     } else {
       directoryName = directoryName.slice(1);
-      return mainDirectory.getNestedChildDirectory(directoryName);
+      return mainDirectory.getNestedChildElement(directoryName);
     }
   }
 

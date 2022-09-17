@@ -1,6 +1,7 @@
-class Directory {
-  constructor(directoryName) {
-    this.name = Directory.removeTrailingSlash(directoryName);
+class Directory extends FileElement {
+  constructor(directoryName, parent=null) {
+    directoryName = Directory.removeTrailingSlash(directoryName);
+    super(directoryName, parent);
     this.elements = [];
   }
 
@@ -14,8 +15,19 @@ class Directory {
     return directoryName;
   }
 
+  static removeLeadingSlash(directoryName) {
+    if (directoryName === '/') {
+      return directoryName; 
+    }
+    if (directoryName.startsWith('/')) {
+      return directoryName.slice(1);
+    }
+    return directoryName;
+  }
+
   addElement(element) {
     this.elements.push(element);
+    element.parent = this;
   }
 
   removeElement(element) {
@@ -25,30 +37,54 @@ class Directory {
     return this.elements;
   }
 
-  getChildDirectory(directoryName) {
-    const indexOfDirectory = this.elements.map(element => element.name).indexOf(directoryName);
-    if (indexOfDirectory === -1) {
-      throw Error(`Directory "${this.name}/" does not have a child directory called "${directoryName}"!`)
+  getChildElement(elementName) {
+    const indexOfElement = this.elements.map(element => element.name).indexOf(elementName);
+    if (indexOfElement === -1) {
+      throw Error(`Directory "${this.name}/" does not have a child directory/file called "${elementName}"!`)
     }
-    const directory = this.elements[indexOfDirectory];
-    console.log("directory is", directory);
-    if (!(directory instanceof Directory)) {
-      throw new Error(`${directoryName} is a file, not a directory!`)
+    const element = this.elements[indexOfElement];
+    return element;
+  }
+  
+  getChildElementWhichShouldNotBeAFile(directoryName) {
+    const element = this.getChildElement(directoryName);
+    if (!(element instanceof Directory)) {
+      throw new Error(`${directoryName} is a file, not a directory!`);
     }
-    return directory;
+    return element;
   }
 
-  getNestedChildDirectory(fullPath) {
+  getChildElementWhichShouldBeAFile(fileName) {
+    const element = this.getChildElement(fileName);
+    if (!(element instanceof SimpleFile)) {
+      throw new Error(`${fileName} is a directory, not a file!`);
+    }
+    return element;
+  }
+
+  getNestedChildElement(fullPath) {
+    fullPath = Directory.removeLeadingSlash(fullPath);
+    console.log("fullpath", fullPath);
     if (!fullPath) {
+      console.log("returning", this);
       return this;
     }
-    console.log(fullPath, "fullpath");
-    const directoriesList = fullPath.split('/');
-    const immediateNextDirectoryName = directoriesList[0];
-    console.log("immediateNextDirectoryName", immediateNextDirectoryName);
-    const immediateNextDirectory = this.getChildDirectory(immediateNextDirectoryName);
-    console.log("immediateNextDirectory", immediateNextDirectory);
-    return immediateNextDirectory.getNestedChildDirectory(directoriesList.slice(1).join("/"));
+    const elementsList = fullPath.split('/');
+    if (elementsList.length === 1) {
+      
+    }
+    const immediateNextElementName = elementsList[0];
+    const immediateNextElement = this.getChildElementWhichShouldNotBeAFile(immediateNextElementName);
+    return immediateNextElement.getNestedChildElement(elementsList.slice(1).join("/"));
+  }
+
+  getNestedChildElementWhichShouldNotBeAFile(fullPath) {
+    console.log("path", fullPath);
+    const element = this.getNestedChildElement(fullPath);
+    if (!(element instanceof Directory)) {
+      throw Error(`No directory found with path "${fullPath}"!`)
+    }
+    return element;
   }
 
   /**
@@ -73,6 +109,7 @@ class Directory {
     span.appendChild(a);
     span.className = "ls-result";
 
+    console.log(this.getFullPathFromRoot());
     a.onclick = this.handleClick;
     return span;
   }

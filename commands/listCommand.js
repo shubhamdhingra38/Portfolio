@@ -8,7 +8,6 @@ class ListCommand extends Command {
 
   /**
    * List directory, current directory or given directory.
-   * Does not support listing nested directory yet.
    * @param {string} directoryName Name of directory
    */
   execute(directoryName) {
