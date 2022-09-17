@@ -171,6 +171,11 @@ class Terminal {
     return directory.listDirectory();
   }
 
+  getFileInDirectory(directoryName) {
+    const file = this.currentDirectory.getNestedChildElementWhichShouldBeAFile(directoryName);
+    return file;
+  }
+
   setCurrentDirectory(directory) {
     this.currentDirectory = directory;
   }

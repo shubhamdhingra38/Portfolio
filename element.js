@@ -1,7 +1,7 @@
 class FileElement {
-  constructor(name, parent = null) {
+  constructor(name) {
     this.name = name;
-    this.parent = parent;
+    this.parent = null;
   }
 
   getFullPathFromRoot() {

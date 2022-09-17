@@ -1,33 +1,24 @@
 class CatCommand extends Command {
   
-  execute(fName) {
+  execute(fullPath) {
     let ok = false;
-    if (fName && fName !== "") {
-      let name = fName.trimRight();
-      let info = null;
-      this.terminal.getElementsInCurrentDirectory().forEach((ele) => {
-        if (ele.name === name) {
-          info = ele;
-        }
-      });
-      if (info) {
-        //file in CURRENT directory
-        if (info.accessDenied) {
+    try {
+      let file = this.terminal.getFileInDirectory(fullPath);
+      if (file) {
+        if (file.accessDenied) {
           this.terminal.addDiv("<p class='unauth'>Permission denied</p>");
         } else {
-          if (name == "about.txt") {
-            this.terminal.addLine(ABOUT_TEXT);
-          } else if (name == "script.py") {
-            this.terminal.addLine(SCRIPT_TEXT);
-          }
+          const contents = file.getContents();
+          this.terminal.addLine(contents);
         }
         ok = true;
       }
     }
-    let name = fName || "";
+    catch (error) {
+      console.error(error);
+    }
     if (!ok) {
-      //nothing found
-      this.terminal.showError(`cat: ${name}: No such file`);
+      this.terminal.showError(`cat: No such file found at path "${fullPath}"`);
     }
   }
 }

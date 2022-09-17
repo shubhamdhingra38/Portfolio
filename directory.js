@@ -1,7 +1,7 @@
 class Directory extends FileElement {
-  constructor(directoryName, parent=null) {
+  constructor(directoryName) {
     directoryName = Directory.removeTrailingSlash(directoryName);
-    super(directoryName, parent);
+    super(directoryName);
     this.elements = [];
   }
 
@@ -64,25 +64,30 @@ class Directory extends FileElement {
 
   getNestedChildElement(fullPath) {
     fullPath = Directory.removeLeadingSlash(fullPath);
-    console.log("fullpath", fullPath);
     if (!fullPath) {
-      console.log("returning", this);
       return this;
     }
     const elementsList = fullPath.split('/');
-    if (elementsList.length === 1) {
-      
-    }
     const immediateNextElementName = elementsList[0];
-    const immediateNextElement = this.getChildElementWhichShouldNotBeAFile(immediateNextElementName);
+    const immediateNextElement = this.getChildElement(immediateNextElementName);
+    if (immediateNextElement instanceof SimpleFile) {
+      return immediateNextElement;
+    }
     return immediateNextElement.getNestedChildElement(elementsList.slice(1).join("/"));
   }
 
   getNestedChildElementWhichShouldNotBeAFile(fullPath) {
-    console.log("path", fullPath);
     const element = this.getNestedChildElement(fullPath);
     if (!(element instanceof Directory)) {
       throw Error(`No directory found with path "${fullPath}"!`)
+    }
+    return element;
+  }
+
+  getNestedChildElementWhichShouldBeAFile(fullPath) {
+    const element = this.getNestedChildElement(fullPath);
+    if (!(element instanceof SimpleFile)) {
+      throw Error(`No file found with path "${fullPath}"!`)
     }
     return element;
   }

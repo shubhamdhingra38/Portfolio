@@ -32,8 +32,21 @@ newDirectory.addElement(new SimpleFile("hello_world.txt"));
 normalDirectory.addElement(newDirectory);
 
 const mainDirectory = new Directory("/");
-mainDirectory.addElement(new SimpleFile("about.txt"));
-mainDirectory.addElement(new SimpleFile("script.py"));
+mainDirectory.addElement(new SimpleFile("about.txt", `
+          Name: ${INFO.firstName} ${INFO.lastName}
+          Contact: ${INFO.contact}
+          Location: ${INFO.location}
+          `));
+mainDirectory.addElement(new SimpleFile("script.py", `
+#!/usr/bin/env python3
+ 
+#How to make people mad at you
+
+import numpy as pd
+import pandas as np
+def foo():
+    print("bar")
+`));
 mainDirectory.addElement(projectsDirectory);
 mainDirectory.addElement(normalDirectory);
 
@@ -139,20 +152,6 @@ let CONTACT_DIRECTORY = [
   },
 ];
 
-let ABOUT_TEXT = `
-Name: ${INFO.firstName} ${INFO.lastName}
-Contact: ${INFO.contact}
-Location: ${INFO.location}
-`;
-
-let SCRIPT_TEXT = `
-#How to make people mad at you
-
-import numpy as pd
-import pandas as np
-def foo():
-    print("bar")
-`;
 
 let PYTHON_CLASS_BODY = `
 #------------------------------------
@@ -185,9 +184,7 @@ import pickle
 shubham = pickle.loads('./shubham.pkl')
 
 #------------------------------------
-
-
-`;
+`
 
 
 
