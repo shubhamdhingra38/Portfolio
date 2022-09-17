@@ -1,6 +1,7 @@
 class PresentWorkingDirectoryCommand extends Command {
     execute() {
-        this.terminal.addLine(this.terminal.currentDirectory.name + '/');
+        const pathFromRoot = this.terminal.currentDirectory.getFullPathFromRoot();
+        this.terminal.addLine(pathFromRoot + '/');
         this.terminal.addLine("\n");
     }
 }

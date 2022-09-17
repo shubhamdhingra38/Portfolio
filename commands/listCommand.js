@@ -15,12 +15,8 @@ class ListCommand extends Command {
     try {
       let elementsInDirectory;
       if (directoryName) {
-        if (directoryName === '/') {
-          elementsInDirectory = mainDirectory.listDirectory();
-        } else {
-          directoryName = Directory.removeTrailingSlash(directoryName);
-          elementsInDirectory = this.terminal.getElementsInDirectory(directoryName);
-        }
+        const directory = this.getDirectory(directoryName);
+        elementsInDirectory = directory.listDirectory();
       } else {
         elementsInDirectory = this.terminal.currentDirectory.listDirectory();
       }

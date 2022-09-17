@@ -2,6 +2,7 @@ class Directory extends FileElement {
   constructor(directoryName) {
     directoryName = Directory.removeTrailingSlash(directoryName);
     super(directoryName);
+    console.log("name", this.name);
     this.elements = [];
   }
 
@@ -95,8 +96,9 @@ class Directory extends FileElement {
   /**
    * Override method for custom click behaviour
    */
-  handleClick(e) {
-    $("#terminal-text-active").val(`ls ${e.target.title}`);
+  handleClick(fullPath) {
+    console.log(fullPath);
+    $("#terminal-text-active").val(`ls ${fullPath}`);
     terminal.createNextLine();
   }
 
@@ -114,8 +116,7 @@ class Directory extends FileElement {
     span.appendChild(a);
     span.className = "ls-result";
 
-    console.log(this.getFullPathFromRoot());
-    a.onclick = this.handleClick;
+    a.onclick = () => this.handleClick(this.getFullPathFromRoot());
     return span;
   }
 }

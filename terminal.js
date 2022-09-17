@@ -166,16 +166,6 @@ class Terminal {
     return this.currentDirectory.listDirectory();
   }
 
-  getElementsInDirectory(directoryName) {
-    const directory = this.currentDirectory.getNestedChildElementWhichShouldNotBeAFile(directoryName);
-    return directory.listDirectory();
-  }
-
-  getFileInDirectory(directoryName) {
-    const file = this.currentDirectory.getNestedChildElementWhichShouldBeAFile(directoryName);
-    return file;
-  }
-
   setCurrentDirectory(directory) {
     this.currentDirectory = directory;
   }

@@ -3,7 +3,7 @@ class CatCommand extends Command {
   execute(fullPath) {
     let ok = false;
     try {
-      let file = this.terminal.getFileInDirectory(fullPath);
+      let file = this.getFile(fullPath);
       if (file) {
         if (file.accessDenied) {
           this.terminal.addDiv("<p class='unauth'>Permission denied</p>");
