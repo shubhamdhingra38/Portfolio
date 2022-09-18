@@ -15,9 +15,8 @@ let cd = new ChangeDirectoryCommand(terminal, "cd command description");
 let pwd = new PresentWorkingDirectoryCommand(terminal, "pwd description");
 let mkdir = new MakeDirectoryCommand(terminal, "mkdir command description");
 let touch = new TouchElementCommand(terminal, "touch command description");
-let clear = new ClearCommand(terminal, "clear command description")
+let clear = new ClearCommand(terminal, "clear command description");
 
-const project = new Project(PROJECTS_DIRECTORY[3]);
 
 $(document).ready(() => {
   document

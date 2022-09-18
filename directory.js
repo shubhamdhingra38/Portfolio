@@ -75,7 +75,16 @@ class Directory extends FileElement {
     }
     const elementsList = fullPath.split('/');
     const immediateNextElementName = elementsList[0];
-    const immediateNextElement = this.getChildElement(immediateNextElementName);
+    
+    let immediateNextElement;
+    if (immediateNextElementName === '..') {
+      if (this.parent === null) {
+        return mainDirectory;
+      }
+      immediateNextElement = this.parent;
+    } else {
+      immediateNextElement = this.getChildElement(immediateNextElementName);
+    }
     if (immediateNextElement instanceof SimpleFile) {
       return immediateNextElement;
     }
@@ -128,8 +137,3 @@ class Directory extends FileElement {
     return span;
   }
 }
-
-
-// class ProjectDirectory extends Directory {
-  
-// }

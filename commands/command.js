@@ -33,10 +33,18 @@ class Command {
       throw new Error('You have to implement the method!');
     }
 
+    // cd ..
+    // cd ..
+    // cd ../projects/
+    // cd ../../
+
     getDirectoryRelativeToCurrent(directoryName) {
       if (Command.isCurrentDirectoryRelativeCommand(directoryName)) {
         directoryName = directoryName.slice(2);
       }
+      // if (Command.isPreviousDirectoryRelativeCommand(directoryName)) {
+      //   return 
+      // }
       return this.terminal.currentDirectory.getNestedChildElementWhichShouldNotBeAFile(directoryName);
     }
 
