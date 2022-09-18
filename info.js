@@ -1,4 +1,7 @@
-let INFO = {
+/**
+ * Personal information, customize as per need
+ */
+const INFO = {
   firstName: "Shubham",
   lastName: "Dhingra",
   contact: "dhingra.shubham38@gmail.com",
@@ -14,30 +17,65 @@ let INFO = {
     "Web Scraping",
     "Data Structures And Algorithms",
   ],
+  resumeLink:
+    "https://drive.google.com/file/d/1qLlfsaOC6vwpM5ZjZi67grcQ_oEbFBZJ/view",
+  githubLink: "https://github.com/shubhamdhingra38",
 };
 
-let RESUME_LINK =
-  "https://drive.google.com/file/d/1qLlfsaOC6vwpM5ZjZi67grcQ_oEbFBZJ/view";
-let GITHUB_LINK = "https://github.com/shubhamdhingra38";
+/**
+ * Directory structure, customize as per need
+ */
 
+/**
+ * Personal projects
+ */
+const quickGraderProject = new Directory("QuickGrader/");
+quickGraderProject.addElement(new SimpleFile("info.txt", `Info about project`));
+quickGraderProject.addElement(
+  new ProjectFile(
+    "quickGrader.bin",
+    contents="Uses NLP for making the process of grading short answer quizzes in a largely automated fashion. Also includes plagiarism detection.",
+    projectTitle="Quick Grader",
+    projectTags=["Django", "Django Rest Framework", "ReactJS", "MaterialUI", "Natural Language Processing"]
+  )
+);
+
+const visualAlgorithmsProject = new Directory("VisualAlgorithms/");
+visualAlgorithmsProject.addElement(
+  new SimpleFile("info.txt", `Info about project`)
+);
 
 const projectsDirectory = new Directory("projects/");
-projectsDirectory.addElement(new SimpleFile("test.txt"));
-projectsDirectory.addElement(new SimpleFile("test2.txt"));
-const normalDirectory = new Directory("normal/");
-normalDirectory.addElement(new SimpleFile("abc.txt"));
+projectsDirectory.addElement(quickGraderProject);
+projectsDirectory.addElement(visualAlgorithmsProject);
+projectsDirectory.addElement(
+  new SimpleFile("about.txt", `Overview of projects`)
+);
 
-const newDirectory = new Directory("test/");
-newDirectory.addElement(new SimpleFile("hello_world.txt"));
-normalDirectory.addElement(newDirectory);
+/**
+ * Contacts: LinkedIn, email, etc.
+ */
+const contactDirectory = new Directory("contact/");
+contactDirectory.addElement(new SimpleFile("info.txt", `Placeholder for info`));
 
+/**
+ * Root directory as home, because home directory is difficult to code :(
+ */
 const mainDirectory = new Directory("/");
-mainDirectory.addElement(new SimpleFile("about.txt", `
+mainDirectory.addElement(
+  new SimpleFile(
+    "about.txt",
+    `
           Name: ${INFO.firstName} ${INFO.lastName}
           Contact: ${INFO.contact}
           Location: ${INFO.location}
-          `));
-mainDirectory.addElement(new SimpleFile("script.py", `
+          `
+  )
+);
+mainDirectory.addElement(
+  new SimpleFile(
+    "script.py",
+    `
 #!/usr/bin/env python3
  
 #How to make people mad at you
@@ -46,11 +84,11 @@ import numpy as pd
 import pandas as np
 def foo():
     print("bar")
-`));
+`
+  )
+);
 mainDirectory.addElement(projectsDirectory);
-mainDirectory.addElement(normalDirectory);
-
-
+mainDirectory.addElement(contactDirectory);
 
 let PROJECTS_DIRECTORY = [
   {
@@ -77,9 +115,9 @@ let PROJECTS_DIRECTORY = [
       "NLP",
     ],
     video: "https://www.youtube.com/embed/PfjNndQzO3c",
-    handleClick: function() {
-      projectHandleClick("QuickGrader")
-    }
+    handleClick: function () {
+      projectHandleClick("QuickGrader");
+    },
   },
   {
     name: "Collaborative_Code_Editing",
@@ -95,9 +133,9 @@ let PROJECTS_DIRECTORY = [
       "Boostrap",
     ],
     video: "https://www.youtube.com/embed/Tez2jAOlcM8",
-    handleClick: function() {
-      projectHandleClick("Collaborative_Code_Editing")
-    }
+    handleClick: function () {
+      projectHandleClick("Collaborative_Code_Editing");
+    },
   },
   {
     name: "QFiction",
@@ -113,9 +151,9 @@ let PROJECTS_DIRECTORY = [
     ],
     tags: ["HTML/CSS", "Bootstrap", "Python", "Flask", "NLP"],
     video: "https://www.youtube.com/embed/N6OQ2bsTO2c",
-    handleClick: function() {
-      projectHandleClick("QFiction")
-    }
+    handleClick: function () {
+      projectHandleClick("QFiction");
+    },
   },
 
   {
@@ -132,9 +170,9 @@ let PROJECTS_DIRECTORY = [
     ],
     tags: ["HTML/CSS", "JavaScript", "p5.js", "Bootstrap"],
     video: "https://www.youtube.com/embed/6L2p9XwU7K0",
-    handleClick: function() {
-      projectHandleClick("Visual_Algorithms")
-    }
+    handleClick: function () {
+      projectHandleClick("Visual_Algorithms");
+    },
   },
 ];
 
@@ -151,7 +189,6 @@ let CONTACT_DIRECTORY = [
     isExecutable: true,
   },
 ];
-
 
 let PYTHON_CLASS_BODY = `
 #------------------------------------
@@ -184,9 +221,7 @@ import pickle
 shubham = pickle.loads('./shubham.pkl')
 
 #------------------------------------
-`
-
-
+`;
 
 let PYTHON_INFO = `
 >>> print(shubham)

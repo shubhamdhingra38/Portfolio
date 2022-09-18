@@ -81,6 +81,11 @@ p {
   animation: blink 0.8s linear infinite alternate;
 }
 
+.interactable-file {
+  color: #ffff66 !important;
+  text-shadow: 0px 0 10px #ffff66, 0 0 2px #ffff66;
+}
+
 p > a {
   color: rgb(17, 255, 152);
   text-decoration: none;
@@ -162,7 +167,7 @@ input {
 
 .project {
   padding: 5px 7px;
-  background-color: rgba(187, 187, 187, 0.25);
+  background-color: rgba(0, 0, 0, 0.8);
   width: 60vw;
   margin-left: auto;
   margin-right: auto;
@@ -210,6 +215,7 @@ input {
 }
 
 .project-container {
+  position: fixed;
   bottom: 50px;
   right: 50px;
   display: block;

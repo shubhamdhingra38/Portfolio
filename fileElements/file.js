@@ -9,4 +9,7 @@ class SimpleFile extends FileElement {
     getContents() {
        return this.contents; 
     }
+    getFileNameWithoutExtension() {
+        return this.name.split('.')[0];
+    }
 }

@@ -111,7 +111,6 @@ class Directory extends FileElement {
    * Override method for custom click behaviour
    */
   handleClick(fullPath) {
-    console.log(fullPath);
     $("#terminal-text-active").val(`ls ${fullPath}`);
     terminal.createNextLine();
   }
