@@ -26,8 +26,8 @@ class ProjectFile extends SimpleFile {
     }
 
     terminal.addDiv(
-      `<div class="project-container" id=${id}>
-        <div class="project">
+      `<div class="project-container">
+        <div class="project" id=${id}>
             <div class="project-header">
               <p class="project-title">${this.title}</p>
               <div class="menu-btns" >
