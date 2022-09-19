@@ -1,6 +1,7 @@
 class ChangeDirectoryCommand extends Command {
 
-  execute(directoryName) {
+  execute(...args) {
+    const directoryName = args[0];
     try {
       directoryName = Directory.removeTrailingSlash(directoryName);
       const directory = this.getDirectory(directoryName);

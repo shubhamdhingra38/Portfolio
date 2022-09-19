@@ -30,31 +30,41 @@ class Terminal {
   }
 
   executeCommand(command) {
-    if (command.startsWith("cat ")) {
-      let fileName = command.split(" ")[1];
-      cat.execute(fileName);
-    } else if (command.startsWith("ls ") || command === "ls") {
-      let fileName = command.split(" ")[1];
-      ls.execute(fileName);
-    } else if (command.startsWith("cd ")) {
-      let directoryName = command.split(" ")[1];
-      cd.execute(directoryName);
-    } else if (command.startsWith("pwd ") || command === "pwd") {
-      pwd.execute();
-    } else if(command.startsWith("mkdir ")) {
-      let directoryName = command.split(" ")[1];
-      mkdir.execute(directoryName);
-    } else if(command.startsWith("touch ")) {
-      let fileName = command.split(" ")[1];
-      touch.execute(fileName);
-    } else if(command === 'clear') {
-      clear.execute();
-    } else if (command === '' || command.startsWith('./')) {
-        //TODO: with ./ command check if binary in current directory
+    const tokens = command.split(' ').slice(1);
+    try {
+      if (command.startsWith("cat ")) {
+        cat.checkIfValidThenExecute(...tokens);
+      } else if (command.startsWith("ls ") || command === "ls") {
+        ls.checkIfValidThenExecute(...tokens);
+      } else if (command.startsWith("cd ")) {
+        cd.checkIfValidThenExecute(...tokens);
+      } else if (command.startsWith("pwd ") || command === "pwd") {
+        pwd.checkIfValidThenExecute();
+      } else if(command.startsWith("mkdir ")) {
+        mkdir.checkIfValidThenExecute(...tokens);
+      } else if(command.startsWith("touch ")) {
+        touch.checkIfValidThenExecute(...tokens);
+      } else if(command === 'clear') {
+        clear.checkIfValidThenExecute();
+      } else if(command === 'help') {
+        help.checkIfValidThenExecute();
+      } 
+      else if (command === '' || command.startsWith('./')) {
+          //TODO: with ./ command check if binary in current directory
+      }
+      else {
+        this.showError(`${command} is not a valid command! Type "help" to see a list of valid commands.`)
+      }
+    } catch (e) {
+      console.error(e);
+      if (e instanceof InvalidArgsException) {
+        this.showError(e.message);
+      } else {
+        this.showError(`Something broke 😔`)
+      }
     }
-    else {
-      this.showError(`${command} is not a valid command! Type "help" to see a list of valid commands.`)
-    }
+    
+    
   }
 
   createNextLine() {

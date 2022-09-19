@@ -9,13 +9,16 @@ let emailDetails = {
 };
 
 const terminal = new Terminal([]);
-let ls = new ListCommand(terminal, "ls command description");
-let cat = new CatCommand(terminal, "cat command description");
-let cd = new ChangeDirectoryCommand(terminal, "cd command description");
-let pwd = new PresentWorkingDirectoryCommand(terminal, "pwd description");
-let mkdir = new MakeDirectoryCommand(terminal, "mkdir command description");
-let touch = new TouchElementCommand(terminal, "touch command description");
-let clear = new ClearCommand(terminal, "clear command description");
+const ls = new ListCommand(terminal, "ls", "ls command description", [0, 1]);
+const cat = new CatCommand(terminal, "cat", "cat command description", [1]);
+const cd = new ChangeDirectoryCommand(terminal, "cd", "cd command description", [1]);
+const pwd = new PresentWorkingDirectoryCommand(terminal, "pwd", "pwd description", [0]);
+const mkdir = new MakeDirectoryCommand(terminal, "mkdir", "mkdir command description", [1]);
+const touch = new TouchElementCommand(terminal, "touch", "touch command description", [1]);
+const clear = new ClearCommand(terminal, "clear", "clear command description", [0]);
+
+const commands = [ls, cat, cd, pwd, mkdir, touch, clear];
+const help = new HelpCommand(terminal, "help", "help command description", [0, 1], commands);
 
 
 $(document).ready(() => {

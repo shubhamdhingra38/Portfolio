@@ -1,4 +1,4 @@
-class MakeDirectoryCommand extends CrateElementCommand {
+class MakeDirectoryCommand extends CreateElementCommand {
   getNewElement(elementName) {
     return new Directory(elementName);
   }

@@ -1,7 +1,9 @@
 class Command {
-    constructor(terminal, description) {
+    constructor(terminal, command, description, expectedArgumentsCount) {
       this.terminal = terminal;
+      this.command = command;
       this.description = description;
+      this.expectedArgumentsCount = expectedArgumentsCount;
     }
     
     static isCurrentDirectoryRelativeCommand(command) {
@@ -10,6 +12,13 @@ class Command {
 
     static isRootRelativeCommand(command) {
       return command.startsWith('/');
+    }
+
+    checkIfValidThenExecute(...args) {
+      if(!this.expectedArgumentsCount.includes(args.length)) {
+        throw new InvalidArgsException(`Invalid usage, this command does not expect ${args.length} number of arguments!`);
+      }
+      this.execute(...args);
     }
 
     /**

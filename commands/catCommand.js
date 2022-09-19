@@ -1,6 +1,7 @@
 class CatCommand extends Command {
   
-  execute(fullPath) {
+  execute(...args) {
+    const fullPath = args[0];
     let ok = false;
     try {
       let file = this.getFile(fullPath);

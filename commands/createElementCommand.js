@@ -1,4 +1,4 @@
-class CrateElementCommand extends Command {
+class CreateElementCommand extends Command {
   createNewDirectory(directoryName) {
     if (directoryName == "/") {
       return;
@@ -38,7 +38,8 @@ class CrateElementCommand extends Command {
     }
   }
 
-  execute(directoryName) {
+  execute(...args) {
+    const directoryName = args[0];
     this.createNewDirectory(directoryName);
   }
   

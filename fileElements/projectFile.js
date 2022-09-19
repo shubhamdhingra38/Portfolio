@@ -27,7 +27,7 @@ class ProjectFile extends SimpleFile {
       return;
     }
 
-    $("#terminal-text-active").val(`./${this.name}`);
+    $("#terminal-text-active").val(`.${this.getFullPathFromRoot()}`);
     terminal.createNextLine();
 
     terminal.addDiv(

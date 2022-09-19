@@ -1,5 +1,5 @@
-class TouchElementCommand extends CrateElementCommand {
-    getNewElement(elementName) {
-        return new SimpleFile(elementName);
-    }
+class TouchElementCommand extends CreateElementCommand {
+  getNewElement(elementName) {
+    return new SimpleFile(elementName);
+  }
 }
