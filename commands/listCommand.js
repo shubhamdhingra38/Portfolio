@@ -11,8 +11,6 @@ class ListCommand extends Command {
    */
   execute(...args) {
     const directoryName = args.length !== 0 ? args[0] : null;
-    console.log("directoryName", directoryName);
-    console.log("args", args);
     this.resetLastElementID();
     try {
       let elementsInDirectory;

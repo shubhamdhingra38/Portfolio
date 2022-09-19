@@ -9,7 +9,6 @@ function preload() {
 
 let myAlphabets = 'abcdefghijklmnopqrstuvwxyz'.split('');
 myAlphabets.push(...['{', '}', '#', '_', '-', ':', '(', ')'])
-console.log(myAlphabets)
 
 let speedUpper, speedLower
 speedUpper = 4
