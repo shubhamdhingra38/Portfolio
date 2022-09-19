@@ -78,10 +78,26 @@ collaborativeCodeEditingProject.addElement(
   )
 )
 
+const qFictionProject = new Directory("QFiction");
+qFictionProject.addElement(
+  new SimpleFile("info.txt", `Info about project`)
+);
+qFictionProject.addElement(
+  new ProjectFile(
+    "qFiction.bin",
+    contents="Used a pre-trained BERT model on SQuAD and performed fine-tuning on several fiction novels corpus. It allows searching for an answer to a given question in the reference text.",
+    projectTitle="QFiction",
+    projectTags=["HTML/CSS", "Bootstrap", "Python", "Flask", "NLP"],
+    projectYoutubeLink="https://www.youtube.com/embed/N6OQ2bsTO2c",
+    projectGithubLink="https://github.com/shubhamdhingra38/QFiction",
+  )
+);
+
 const projectsDirectory = new Directory("projects/");
 projectsDirectory.addElement(quickGraderProject);
 projectsDirectory.addElement(visualAlgorithmsProject);
 projectsDirectory.addElement(collaborativeCodeEditingProject);
+projectsDirectory.addElement(qFictionProject);
 projectsDirectory.addElement(
   new SimpleFile("about.txt", `Overview of projects`)
 );

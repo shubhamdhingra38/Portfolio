@@ -27,6 +27,9 @@ class ProjectFile extends SimpleFile {
       return;
     }
 
+    $("#terminal-text-active").val(`./${this.name}`);
+    terminal.createNextLine();
+
     terminal.addDiv(
       `<div class="project-container">
         <div class="project" id=${id}>

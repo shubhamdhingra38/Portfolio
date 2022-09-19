@@ -23,19 +23,6 @@ class Terminal {
     return textEntered;
   }
 
-  //TODO: What the hell does this do
-  // whatDoesThisDo(textEntered) {
-  //   if (this.inputMode) {
-  //     this.addLine(textEntered);
-  //     this.lastEnteredText = textEntered;
-  //     this.commands["./"].call(this);
-
-  //     if (this.commands["./"].ptr !== MAIL_INPUT_INFO.length + 1)
-  //       terminal.createNextCursor();
-  //     return;
-  //   }
-  // }
-
   addTextToLine(textEntered) {
     this.terminalTexts[
       this.terminalTexts.length - 1
@@ -62,57 +49,23 @@ class Terminal {
       touch.execute(fileName);
     } else if(command === 'clear') {
       clear.execute();
-    } else if (command === '') {
-      
+    } else if (command === '' || command.startsWith('./')) {
+        //TODO: with ./ command check if in current directory
     }
     else {
       this.showError(`${command} is not a valid command! Type "help" to see a list of valid commands.`)
     }
-    // this.commands["ls"].call(this);
-    // if (command.startsWith("cat ")) {
-    //   let name = command.split(" ")[1];
-    //   this.commands["cat"].call(this, name);
-    // } else if (command == "python") {
-    //   this.active = false;
-    //   this.commands["python"].call(this);
-    // } else if (command.startsWith("./")) {
-    //   let fileName = command.split(" ")[0].slice(2);
-    //   if (fileName === "email_me.sh" && this.currentDirectory === "contact") {
-    //     this.commands["./"].call(this);
-    //     this.inputMode = true;
-    //   } else {
-    //     this.showInvalidCommand(command);
-    //   }
-    // } else if (this.commands[command]) {
-    //   this.commands[command].call(this);
-    // } else if (command.startsWith("cd ")) {
-    //   let dir = command.split(" ").splice(1).join(" ");
-    //   this.commands["cd"].call(terminal, dir);
-    // } else if (command.trim(" ") == "") {
-    //   //allow empty line
-    // } else {
-    //   this.showInvalidCommand(command);
-    // }
-  }
-
-  renderCurrentDirectory() {
-    // this.path = "~";
-    // if (this.currentDirectory != "~") {
-    //   this.path = `~/${this.currentDirectory}`;
-    // }
   }
 
   createNextLine() {
     let textEntered = this.renderCommandAndGoToNextLine();
     console.log("The Entered text is:", textEntered);
 
-    // this.whatDoesThisDo(textEntered);
     this.addTextToLine(textEntered);
 
     let command = textEntered.trim();
     this.executeCommand(command);
 
-    this.renderCurrentDirectory();
     this.createNextCursor();
   }
 
