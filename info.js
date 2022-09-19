@@ -46,10 +46,42 @@ const visualAlgorithmsProject = new Directory("VisualAlgorithms/");
 visualAlgorithmsProject.addElement(
   new SimpleFile("info.txt", `Info about project`)
 );
+visualAlgorithmsProject.addElement(
+  new ProjectFile(
+    "visualAlgorithms.bin",
+    contents="This project provides an intuitive view of how algorithms works, which is by visualizing them and looking at what operations are performed at every step.",
+    projectTitle="Visual Algorithms",
+    projectTags=["HTML/CSS", "JavaScript", "p5.js", "Bootstrap"],
+    projectYoutubeLink="https://www.youtube.com/embed/6L2p9XwU7K0",
+    projectGithubLink="https://github.com/shubhamdhingra38/Visual-Algorithms",
+  )
+);
+
+const collaborativeCodeEditingProject = new Directory("Collaborative_Code_Editing/");
+collaborativeCodeEditingProject.addElement(
+  new SimpleFile("info.txt", `Info about project`)
+);
+collaborativeCodeEditingProject.addElement(
+  new ProjectFile(
+    "collabCodeEditing.bin",
+    contents="A web application which uses sockets to enable real-time code sharing, chatting and canvas sketching all at once.",
+    projectTitle="Collaborative Code Editing",
+    projectTags = [
+      "Django",
+      "Django Channels",
+      "Django Rest Framework",
+      "HTML/CSS",
+      "Boostrap",
+    ],
+    projectYoutubeLink="https://www.youtube.com/embed/Tez2jAOlcM8",
+    projectGithubLink="https://github.com/shubhamdhingra38/Live-Collaborative-Code-Editing",
+  )
+)
 
 const projectsDirectory = new Directory("projects/");
 projectsDirectory.addElement(quickGraderProject);
 projectsDirectory.addElement(visualAlgorithmsProject);
+projectsDirectory.addElement(collaborativeCodeEditingProject);
 projectsDirectory.addElement(
   new SimpleFile("about.txt", `Overview of projects`)
 );

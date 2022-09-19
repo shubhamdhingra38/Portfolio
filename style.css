@@ -285,7 +285,7 @@ input {
   display: none;
 }
 
-.prev-btn,
+/* .prev-btn,
 .next-btn {
   display: block;
   margin-left: auto;
@@ -305,7 +305,7 @@ input {
   transform: scale(1.1, 1.1);
   background: black;
   border: 2px dashed green;
-}
+} */
 
 @media only screen and (min-width: 768px) {
   .pre-name {
