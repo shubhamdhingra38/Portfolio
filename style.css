@@ -20,6 +20,11 @@ p > strong {
   cursor: pointer;
 }
 
+.highlighted {
+  color: white;
+  font-weight: bold;
+}
+
 p {
   color: white;
 }
@@ -40,6 +45,12 @@ p {
 
 .pre-terminal {
   color: white;
+  text-shadow: 0 0 2px #ffffff, 0 0 2px #000000;
+}
+
+.error-terminal {
+  color: #ee0000;
+  text-shadow: 0 0 2px #ee0000;
 }
 
 #terminal {
@@ -76,6 +87,11 @@ p {
   animation: blink 0.8s linear infinite alternate;
 }
 
+.interactable-file {
+  color: #ffff66 !important;
+  text-shadow: 0px 0 10px #ffff66, 0 0 2px #ffff66;
+}
+
 p > a {
   color: rgb(17, 255, 152);
   text-decoration: none;
@@ -101,6 +117,27 @@ p > a {
 .command-text {
   color: #00cc00 !important;
   font-size: 0.95rem !important;
+}
+
+.infofetch {
+  display: flex;
+}
+
+.infofetch-info {
+  margin-left: 24px;
+  
+}
+.infofetch-info > p > span {
+  color: #ee0000;
+  text-shadow: 0 0 2px #ee0000;
+}
+
+
+.infofetch-img {
+  border: 2px dashed #07ff07;
+  border-radius: 100px;
+  max-width: 70vw;
+  width: 500px;
 }
 
 input {
@@ -157,7 +194,7 @@ input {
 
 .project {
   padding: 5px 7px;
-  background-color: rgba(187, 187, 187, 0.25);
+  background-color: rgba(0, 0, 0, 0.8);
   width: 60vw;
   margin-left: auto;
   margin-right: auto;
@@ -205,9 +242,9 @@ input {
 }
 
 .project-container {
+  position: fixed;
   bottom: 50px;
   right: 50px;
-  display: block;
   justify-content: space-around;
 }
 
@@ -229,6 +266,7 @@ input {
   margin: 0 10px 10px 0;
   text-decoration: none;
   -webkit-transition: color 0.2s;
+  height: 100%;
 }
 
 .tag:hover {
@@ -252,11 +290,12 @@ input {
 
 .close-btn {
   padding: 5px;
+  background: red;
 }
 
 .close-btn:hover {
   color: white;
-  background: red;
+  background: darkred;
 }
 
 .min-btn,
@@ -273,7 +312,7 @@ input {
   display: none;
 }
 
-.prev-btn,
+/* .prev-btn,
 .next-btn {
   display: block;
   margin-left: auto;
@@ -293,7 +332,7 @@ input {
   transform: scale(1.1, 1.1);
   background: black;
   border: 2px dashed green;
-}
+} */
 
 @media only screen and (min-width: 768px) {
   .pre-name {
@@ -323,6 +362,8 @@ input {
     width: 100%;
     margin-left: auto;
     margin-right: auto;
+    bottom: 50px;
+    right: 0px;
   }
 
   .showcase {

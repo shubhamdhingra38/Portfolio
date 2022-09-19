@@ -1,4 +1,7 @@
-let info = {
+/**
+ * Personal information, customize as per need
+ */
+const INFO = {
   firstName: "Shubham",
   lastName: "Dhingra",
   contact: "dhingra.shubham38@gmail.com",
@@ -9,249 +12,163 @@ let info = {
     "Java",
     "Django",
     "ReactJS",
-    "Web Scraping",
-    "Machine Learning",
-    "Deep Learning",
-    "Natural Language Processing",
     "Full Stack Web Development",
+    "AWS",
+    "Web Scraping",
     "Data Structures And Algorithms",
   ],
+  resumeLink:
+    "https://drive.google.com/file/d/1qLlfsaOC6vwpM5ZjZi67grcQ_oEbFBZJ/view",
+  githubLink: "https://github.com/shubhamdhingra38",
+  linkedinLink: "https://www.linkedin.com/in/shubham-dhingra-33372819b/",
+  employeeAt: "Amazon",
+  designation: "SDE1",
+  yoe: "1.5",
+  age: "23",
 };
 
-let resumeLink =
-  "https://drive.google.com/file/d/1qLlfsaOC6vwpM5ZjZi67grcQ_oEbFBZJ/view";
-let githubLink = "https://github.com/shubhamdhingra38";
+/**
+ * Directory structure, customize as per need
+ */
 
-let mainDirectory = [
-  {
-    name: "about.txt",
-    isLink: false,
-  },
-  {
-    name: "script.py",
-    isLink: false,
-  },
-  {
-    name: "projects/",
-    handleClick() {
-      $("#terminal-text-active").val('cd projects/');
-      terminal.createNextLine();
-      $("#terminal-text-active").val('ls');
-      terminal.createNextLine();
-    },
-    isLink: true,
-  },
-  {
-    name: "contact/",
-    handleClick() {
-      $("#terminal-text-active").val('cd contact/');
-      terminal.createNextLine();
-    },
-    isLink: true,
-  },
-  {
-    name: "resume.pdf",
-    isLink: true,
-    link: resumeLink,
-    handleClick() {
-      window.open(resumeLink);
-    },
-  },
-  {
-    name: "github",
-    isLink: true,
-    link: githubLink,
-    handleClick() {
-      window.open(githubLink);
-    },
-  },
-  {
-    name: "shubham.pkl",
-    isLink: false,
-    accessDenied: true, //read permission
-  },
-];
-
-
-function projectHandleClick(name){
-  $("#terminal-text-active").val(`cd ${name}`);
-  terminal.createNextLine();
-}
-
-let projectsDirectory = [
-  {
-    name: "QuickGrader",
-    desc: "Uses NLP for making the process of grading short answer quizzes in a largely automated fashion. Also includes plagiarism detection.",
-    isLink: true,
-    link: "https://github.com/shubhamdhingra38/Quick-Grader",
-    images: [
-      "./static/grade_manual.png",
-      "./static/home.png",
-      "./static/account.png",
-      "./static/register0.png",
-      "./static/create_test1.png",
-      "./static/create_test2.png",
-      "./static/plagiarism1.png",
-      "./static/plagiarism2.png",
-    ],
-    tags: [
-      "ReactJS",
+/**
+ * Personal projects
+ */
+const quickGraderProject = new Directory("QuickGrader/");
+quickGraderProject.addElement(new SimpleFile("info.txt", `Info about project`));
+quickGraderProject.addElement(
+  new ProjectFile(
+    "quickGrader.bin",
+    (contents =
+      "Uses NLP for making the process of grading short answer quizzes in a largely automated fashion. Also includes plagiarism detection."),
+    (projectTitle = "Quick Grader"),
+    (projectTags = [
       "Django",
       "Django Rest Framework",
+      "ReactJS",
       "MaterialUI",
-      "Machine Learning",
-      "NLP",
-    ],
-    video: "https://www.youtube.com/embed/PfjNndQzO3c",
-    handleClick: function() {
-      projectHandleClick("QuickGrader")
-    }
-  },
-  {
-    name: "Collaborative_Code_Editing",
-    desc: "A web application which uses sockets to enable real-time code sharing, chatting and canvas sketching all at once.",
-    isLink: true,
-    link: "https://github.com/shubhamdhingra38/Live-Collaborative-Code-Editing",
-    images: ["./static/collab.png"],
-    tags: [
+      "Natural Language Processing",
+    ]),
+    (projectYoutubeLink = "https://www.youtube.com/embed/PfjNndQzO3c"),
+    (projectGithubLink = "https://github.com/shubhamdhingra38/Quick-Grader")
+  )
+);
+
+const visualAlgorithmsProject = new Directory("VisualAlgorithms/");
+visualAlgorithmsProject.addElement(
+  new SimpleFile("info.txt", `Info about project`)
+);
+visualAlgorithmsProject.addElement(
+  new ProjectFile(
+    "visualAlgorithms.bin",
+    (contents =
+      "This project provides an intuitive view of how algorithms works, which is by visualizing them and looking at what operations are performed at every step."),
+    (projectTitle = "Visual Algorithms"),
+    (projectTags = ["HTML/CSS", "JavaScript", "p5.js", "Bootstrap"]),
+    (projectYoutubeLink = "https://www.youtube.com/embed/6L2p9XwU7K0"),
+    (projectGithubLink =
+      "https://github.com/shubhamdhingra38/Visual-Algorithms")
+  )
+);
+
+const collaborativeCodeEditingProject = new Directory(
+  "Collaborative_Code_Editing/"
+);
+collaborativeCodeEditingProject.addElement(
+  new SimpleFile("info.txt", `Info about project`)
+);
+collaborativeCodeEditingProject.addElement(
+  new ProjectFile(
+    "collabCodeEditing.bin",
+    (contents =
+      "A web application which uses sockets to enable real-time code sharing, chatting and canvas sketching all at once."),
+    (projectTitle = "Collaborative Code Editing"),
+    (projectTags = [
       "Django",
       "Django Channels",
       "Django Rest Framework",
       "HTML/CSS",
       "Boostrap",
-    ],
-    video: "https://www.youtube.com/embed/Tez2jAOlcM8",
-    handleClick: function() {
-      projectHandleClick("Collaborative_Code_Editing")
-    }
-  },
-  {
-    name: "QFiction",
-    isLink: true,
-    desc: "Used a pre-trained BERT model on SQuAD and performed fine-tuning on several fiction novels corpus. It allows searching for an answer to a given question in the reference text.",
-    link: "https://github.com/shubhamdhingra38/QFiction",
-    images: [
-      "./static/qfiction0.png",
-      "./static/qfiction1.png",
-      "./static/qfiction2.png",
-      "./static/qfiction3.png",
-      "./static/qfiction4.png",
-    ],
-    tags: ["HTML/CSS", "Bootstrap", "Python", "Flask", "NLP"],
-    video: "https://www.youtube.com/embed/N6OQ2bsTO2c",
-    handleClick: function() {
-      projectHandleClick("QFiction")
-    }
-  },
+    ]),
+    (projectYoutubeLink = "https://www.youtube.com/embed/Tez2jAOlcM8"),
+    (projectGithubLink =
+      "https://github.com/shubhamdhingra38/Live-Collaborative-Code-Editing")
+  )
+);
 
-  {
-    name: "Visual_Algorithms",
-    desc: "This project provides an intuitive view of how algorithms works, which is by visualizing them and looking at what operations are performed at every step.",
-    techStack: ["JavaScript", "p5.js", "Bootstrap"],
-    isLink: true,
-    link: "https://github.com/shubhamdhingra38/Visual-Algorithms",
-    images: [
-      "./static/TSP.png",
-      "./static/dijkstra_ssp.png",
-      "./static/graph_traversal.png",
-      "./static/Genetic.png",
-    ],
-    tags: ["HTML/CSS", "JavaScript", "p5.js", "Bootstrap"],
-    video: "https://www.youtube.com/embed/6L2p9XwU7K0",
-    handleClick: function() {
-      projectHandleClick("Visual_Algorithms")
-    }
-  },
-];
+const qFictionProject = new Directory("QFiction");
+qFictionProject.addElement(new SimpleFile("info.txt", `Info about project`));
+qFictionProject.addElement(
+  new ProjectFile(
+    "qFiction.bin",
+    (contents =
+      "Used a pre-trained BERT model on SQuAD and performed fine-tuning on several fiction novels corpus. It allows searching for an answer to a given question in the reference text."),
+    (projectTitle = "QFiction"),
+    (projectTags = ["HTML/CSS", "Bootstrap", "Python", "Flask", "NLP"]),
+    (projectYoutubeLink = "https://www.youtube.com/embed/N6OQ2bsTO2c"),
+    (projectGithubLink = "https://github.com/shubhamdhingra38/QFiction")
+  )
+);
 
-let contactDirectory = [
-  {
-    name: "LinkedIn",
-    isLink: true,
-    link: "https://www.linkedin.com/in/shubham-dhingra-33372819b/",
-  },
-  {
-    name: "email_me.sh",
-    isLink: false,
-    accessDenied: true, //read permission
-    isExecutable: true,
-  },
-];
+const projectsDirectory = new Directory("projects/");
+projectsDirectory.addElement(quickGraderProject);
+projectsDirectory.addElement(visualAlgorithmsProject);
+projectsDirectory.addElement(collaborativeCodeEditingProject);
+projectsDirectory.addElement(qFictionProject);
+projectsDirectory.addElement(
+  new SimpleFile("about.txt", `These are some of the projects I worked on while in the past, you're welcome to take a look.
+I have included the showcase video 📹 and links to GitHub ⭐.
+To view, click on the project name and execute that binary file!`)
+);
 
-let aboutText = `
-Name: ${info.firstName} ${info.lastName}
-Contact: ${info.contact}
-Location: ${info.location}
-`;
+/**
+ * Contacts: LinkedIn, email, etc.
+ */
+const contactDirectory = new Directory("contact/");
+contactDirectory.addElement(
+  new LinkFile(
+    "linkedin.txt",
+    `You can reach out to me on LinkedIn, feel free to send a connection request and join my 🕸️ network.
+My LinkedIn is: ${INFO.linkedinLink}. Don't worry, opened this for you in a new tab 🙌!`,
+    INFO.linkedinLink
+  )
+);
+contactDirectory.addElement(
+  new SimpleFile(
+    "email.txt",
+    'Email me at: `dhingra.shubham38@gmail.com`'
+  )
+)
 
-let scriptText = `
+
+/**
+ * Root directory as home, because home directory is difficult to code :(
+ */
+const mainDirectory = new Directory("/");
+mainDirectory.addElement(
+  new SimpleFile(
+    "about.txt",
+    `
+          Name: ${INFO.firstName} ${INFO.lastName}
+          Contact: ${INFO.contact}
+          Location: ${INFO.location}
+          `
+  )
+);
+mainDirectory.addElement(
+  new SimpleFile(
+    "script.py",
+    `
+#!/usr/bin/env python3
+ 
 #How to make people mad at you
 
 import numpy as pd
 import pandas as np
 def foo():
     print("bar")
-`;
-
-let pythonClassBody = `
-#------------------------------------
-
-class Person:
-    def __init__(self, firstName, lastName,
-            age, location, skills, contact):
-        self.firstName = firstName
-        self.lastName = lastName
-        self.age = age
-        self.location = location
-        self.skills = skills
-        self.__contact = contact
-    
-    def __str__(self):
-        return f'{self.firstName} {self.lastName}'
-    
-    def getContactDetails(self):
-        return f'Feel free to reach me out at {self.__contact}'
-    
-    def getLocationDetails(self):
-        return f'I current reside in {location}, India'
-    
-    def getSkills(self):
-        print("Following are my skills")
-        for skill in self.skills:
-            print('•', skill)
-
-import pickle
-shubham = pickle.loads('./shubham.pkl')
-
-#------------------------------------
-
-
-`;
-
-let skills = "";
-info.skills.forEach((skill) => {
-  skills += "• " + skill + "\n";
-});
-
-let pythonInfo = `
->>> print(shubham)
-${info.firstName} ${info.lastName}
-
->>> shubham.getContactDetails()
-Feel free to reach me out at ${info.contact}
-
->>> shubham.getLocationDetails()
-I current reside in ${info.location}, India
-
->>> shubham.getSkills()
-Following are my skills
-${skills}
-`;
-
-let mailInputInfo = [
-  "Hello world! What is your name?",
-  "Enter the subject of the email:",
-  "Enter the body of the email",
-];
-
-let mailInputFields = ["senderName", "subject", "body"];
+`
+  )
+);
+mainDirectory.addElement(projectsDirectory);
+mainDirectory.addElement(contactDirectory);
