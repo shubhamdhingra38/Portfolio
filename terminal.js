@@ -50,7 +50,7 @@ class Terminal {
     } else if(command === 'clear') {
       clear.execute();
     } else if (command === '' || command.startsWith('./')) {
-        //TODO: with ./ command check if in current directory
+        //TODO: with ./ command check if binary in current directory
     }
     else {
       this.showError(`${command} is not a valid command! Type "help" to see a list of valid commands.`)

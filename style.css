@@ -20,6 +20,11 @@ p > strong {
   cursor: pointer;
 }
 
+.highlighted {
+  color: white;
+  font-weight: bold;
+}
+
 p {
   color: white;
 }
