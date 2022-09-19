@@ -45,9 +45,11 @@ class Terminal {
         help.checkIfValidThenExecute(...tokens);
       } else if(command.startsWith("exec ") || command === 'exec') {
         exec.checkIfValidThenExecute(...tokens);
+      } else if (command.startsWith("infofetch ") || command === 'infofetch') {
+        infofetch.checkIfValidThenExecute(...tokens);
       }
-      else if (command === '' || command.startsWith('./')) {
-          //TODO: with ./ command check if binary in current directory
+      else if (command === '') {
+        // Allow new line
       }
       else {
         this.showError(`${command} is not a valid command! Type "help" to see a list of valid commands.`)

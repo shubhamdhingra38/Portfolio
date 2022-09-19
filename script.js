@@ -47,9 +47,16 @@ const exec = new ExecCommand(
   "exec",
   "Use 'exec FILE_NAME.bin' to execute a binary file.",
   [1]
-)
+);
+const infofetch = new InfoFetchCommand(
+  terminal,
+  "infofetch",
+  "List information about me.",
+  [0],
+  INFO
+);
 
-const commands = [ls, cat, cd, pwd, mkdir, touch, clear, exec];
+const commands = [ls, cat, cd, pwd, mkdir, touch, clear, exec, infofetch];
 const help = new HelpCommand(
   terminal,
   "help",

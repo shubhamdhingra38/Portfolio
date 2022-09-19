@@ -21,6 +21,10 @@ const INFO = {
     "https://drive.google.com/file/d/1qLlfsaOC6vwpM5ZjZi67grcQ_oEbFBZJ/view",
   githubLink: "https://github.com/shubhamdhingra38",
   linkedinLink: "https://www.linkedin.com/in/shubham-dhingra-33372819b/",
+  employeeAt: "Amazon",
+  designation: "SDE1",
+  yoe: "1.5",
+  age: "23",
 };
 
 /**
