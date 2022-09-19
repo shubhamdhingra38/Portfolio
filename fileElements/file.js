@@ -1,15 +1,27 @@
 class SimpleFile extends FileElement {
-    constructor(fileName, contents) {
-        super(fileName);
-        this.contents = contents;
-    }
-    render() {
-        return `<span class='ls-result' style='color: rgba(200, 200, 200, 1) !important;'>${this.name}\t</span>`
-    }
-    getContents() {
-       return this.contents; 
-    }
-    getFileNameWithoutExtension() {
-        return this.name.split('.')[0];
-    }
+  constructor(fileName, contents) {
+    super(fileName);
+    this.contents = contents;
+  }
+  render() {
+    let span = document.createElement("span");
+    span.innerText = this.name;
+    span.className = "ls-result";
+    span.style = `cursor: pointer`;
+
+    span.onclick = () => {
+      this.handleClick();
+    };
+    return span;
+  }
+  getContents() {
+    return this.contents;
+  }
+  handleClick() {
+    $("#terminal-text-active").val(`cat ${this.getFullPathFromRoot()}`);
+    terminal.createNextLine();
+  }
+  getFileNameWithoutExtension() {
+    return this.name.split(".")[0];
+  }
 }
