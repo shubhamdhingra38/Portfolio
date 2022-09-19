@@ -66,7 +66,6 @@ class Terminal {
 
   createNextLine() {
     let textEntered = this.renderCommandAndGoToNextLine();
-    console.log("The Entered text is:", textEntered);
 
     this.addTextToLine(textEntered);
 

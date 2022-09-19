@@ -2,7 +2,6 @@ class Directory extends FileElement {
   constructor(directoryName) {
     directoryName = Directory.removeTrailingSlash(directoryName);
     super(directoryName);
-    console.log("name", this.name);
     this.elements = [];
   }
 
