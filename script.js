@@ -1,3 +1,4 @@
+// TODO: global bad!
 const terminal = new Terminal();
 const ls = new ListCommand(
   terminal,
