@@ -14,9 +14,16 @@ class Command {
       return command.startsWith('/');
     }
 
+    static getArgumentsText(args) {
+      if (args.length === 1) {
+        return 'argument';
+      }
+      return 'arguments';
+    }
+
     checkIfValidThenExecute(...args) {
       if(!this.expectedArgumentsCount.includes(args.length)) {
-        throw new InvalidArgsException(`Invalid usage, this command does not expect ${args.length} number of arguments!`);
+        throw new InvalidArgsException(`Invalid usage, this command does not expect ${args.length} ${Command.getArgumentsText(args)}!`);
       }
       this.execute(...args);
     }
@@ -42,18 +49,10 @@ class Command {
       throw new Error('You have to implement the method!');
     }
 
-    // cd ..
-    // cd ..
-    // cd ../projects/
-    // cd ../../
-
     getDirectoryRelativeToCurrent(directoryName) {
       if (Command.isCurrentDirectoryRelativeCommand(directoryName)) {
         directoryName = directoryName.slice(2);
       }
-      // if (Command.isPreviousDirectoryRelativeCommand(directoryName)) {
-      //   return 
-      // }
       return this.terminal.currentDirectory.getNestedChildElementWhichShouldNotBeAFile(directoryName);
     }
 
