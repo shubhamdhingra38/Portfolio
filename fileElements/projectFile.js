@@ -1,10 +1,18 @@
 class ProjectFile extends SimpleFile {
-  constructor(fileName, contents, projectTitle, projectTags, projectYoutubeLink, projectGithubLink) {
+  constructor(
+    fileName,
+    contents,
+    projectTitle,
+    projectTags,
+    projectYoutubeLink,
+    projectGithubLink
+  ) {
     super(fileName, contents);
     this.title = projectTitle;
     this.tags = projectTags;
     this.youtubeLink = projectYoutubeLink;
     this.githubLink = projectGithubLink;
+    this.accessDenied = true;
   }
 
   renderTags() {
@@ -19,16 +27,11 @@ class ProjectFile extends SimpleFile {
     return document.getElementById(id) !== null;
   }
 
-  
-
-  handleClick() {
-    const id = `showcase-${this.getFileNameWithoutExtension()}`
-    if(ProjectFile.alreadyExists(id)) {
+  showWindow() {
+    const id = `showcase-${this.getFileNameWithoutExtension()}`;
+    if (ProjectFile.alreadyExists(id)) {
       return;
     }
-
-    $("#terminal-text-active").val(`.${this.getFullPathFromRoot()}`);
-    terminal.createNextLine();
 
     terminal.addDiv(
       `<div class="project-container">
@@ -49,19 +52,25 @@ class ProjectFile extends SimpleFile {
             <div class="tags">
               ${this.renderTags()}
             </div>
-            <p>Check it out on <span><a class="github-link" target='_blank'href="${this.githubLink}">GitHub</a></span></p>
+            <p>Check it out on <span><a class="github-link" target='_blank'href="${
+              this.githubLink
+            }">GitHub</a></span></p>
         </div>
       </div>`
     );
 
-
     $(function () {
       $(`#${id}`).draggable();
-      $(`#${id}-close-btn`).click(function() {
+      $(`#${id}-close-btn`).click(function () {
         console.log("Destroying...");
         $(`#${id}`).remove();
       });
     });
+  }
+
+  handleClick() {
+    $("#terminal-text-active").val(`exec ${this.getFullPathFromRoot()}`);
+    terminal.createNextLine();
   }
 
   render() {

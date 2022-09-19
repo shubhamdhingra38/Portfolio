@@ -43,7 +43,9 @@ class Terminal {
         clear.checkIfValidThenExecute(...tokens);
       } else if(command.startsWith("help ") || command === 'help') {
         help.checkIfValidThenExecute(...tokens);
-      } 
+      } else if(command.startsWith("exec ") || command === 'exec') {
+        exec.checkIfValidThenExecute(...tokens);
+      }
       else if (command === '' || command.startsWith('./')) {
           //TODO: with ./ command check if binary in current directory
       }
@@ -58,8 +60,6 @@ class Terminal {
         this.showError(`Something broke 😔`)
       }
     }
-    
-    
   }
 
   createNextLine() {

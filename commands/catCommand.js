@@ -7,7 +7,7 @@ class CatCommand extends Command {
       let file = this.getFile(fullPath);
       if (file) {
         if (file.accessDenied) {
-          this.terminal.addDiv("<p class='unauth'>Permission denied</p>");
+          this.terminal.showError("Permission denied!");
         } else {
           const contents = file.getContents();
           this.terminal.addLine(contents);
