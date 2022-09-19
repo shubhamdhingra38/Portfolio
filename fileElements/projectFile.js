@@ -1,8 +1,10 @@
 class ProjectFile extends SimpleFile {
-  constructor(fileName, contents, projectTitle, projectTags) {
+  constructor(fileName, contents, projectTitle, projectTags, projectYoutubeLink, projectGithubLink) {
     super(fileName, contents);
     this.title = projectTitle;
     this.tags = projectTags;
+    this.youtubeLink = projectYoutubeLink;
+    this.githubLink = projectGithubLink;
   }
 
   renderTags() {
@@ -37,14 +39,14 @@ class ProjectFile extends SimpleFile {
               </div>
             </div>
             <p class="project-desc">${this.contents}</p>
-            
-            <button class="prev-btn prev0"><i class="fas fa-arrow-left"></i></button>
-            <button class="next-btn next0"><i class="fas fa-arrow-right"></i></button>
+            <iframe width="100%" height="315"
+                src="${this.youtubeLink}">
+            </iframe>
             <p>Tech stack:</p>
             <div class="tags">
               ${this.renderTags()}
             </div>
-            <p>Check it out on <span><a class="github-link" target='_blank'href=/>GitHub</a></span></p>
+            <p>Check it out on <span><a class="github-link" target='_blank'href="${this.githubLink}">GitHub</a></span></p>
         </div>
       </div>`
     );

@@ -36,7 +36,9 @@ quickGraderProject.addElement(
     "quickGrader.bin",
     contents="Uses NLP for making the process of grading short answer quizzes in a largely automated fashion. Also includes plagiarism detection.",
     projectTitle="Quick Grader",
-    projectTags=["Django", "Django Rest Framework", "ReactJS", "MaterialUI", "Natural Language Processing"]
+    projectTags=["Django", "Django Rest Framework", "ReactJS", "MaterialUI", "Natural Language Processing"],
+    projectYoutubeLink="https://www.youtube.com/embed/PfjNndQzO3c",
+    projectGithubLink="https://github.com/shubhamdhingra38/Quick-Grader",
   )
 );
 

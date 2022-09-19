@@ -218,7 +218,6 @@ input {
   position: fixed;
   bottom: 50px;
   right: 50px;
-  /* display: block; */
   justify-content: space-around;
 }
 
@@ -240,6 +239,7 @@ input {
   margin: 0 10px 10px 0;
   text-decoration: none;
   -webkit-transition: color 0.2s;
+  height: 100%;
 }
 
 .tag:hover {
@@ -263,11 +263,12 @@ input {
 
 .close-btn {
   padding: 5px;
+  background: red;
 }
 
 .close-btn:hover {
   color: white;
-  background: red;
+  background: darkred;
 }
 
 .min-btn,
@@ -334,6 +335,8 @@ input {
     width: 100%;
     margin-left: auto;
     margin-right: auto;
+    bottom: 50px;
+    right: 0px;
   }
 
   .showcase {
