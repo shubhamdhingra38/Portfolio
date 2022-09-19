@@ -1,11 +1,6 @@
 class Terminal {
-  /**
-   * Instantiate terminal with given valid commands
-   * @param {*} commands: list of valid commands
-   */
-  constructor(commands) {
-    this.commands = commands;
-
+ 
+  constructor() {
     this.terminal = $("#terminal");
     this.terminalTexts = document.getElementsByClassName("command-text");
     this.active = true;
@@ -32,22 +27,22 @@ class Terminal {
   executeCommand(command) {
     const tokens = command.split(' ').slice(1);
     try {
-      if (command.startsWith("cat ")) {
+      if (command.startsWith("cat ") || command === 'cat') {
         cat.checkIfValidThenExecute(...tokens);
       } else if (command.startsWith("ls ") || command === "ls") {
         ls.checkIfValidThenExecute(...tokens);
-      } else if (command.startsWith("cd ")) {
+      } else if (command.startsWith("cd ") || command === 'cd') {
         cd.checkIfValidThenExecute(...tokens);
       } else if (command.startsWith("pwd ") || command === "pwd") {
-        pwd.checkIfValidThenExecute();
-      } else if(command.startsWith("mkdir ")) {
+        pwd.checkIfValidThenExecute(...tokens);
+      } else if(command.startsWith("mkdir ") || command === 'mkdir') {
         mkdir.checkIfValidThenExecute(...tokens);
-      } else if(command.startsWith("touch ")) {
+      } else if(command.startsWith("touch ") || command === 'touch') {
         touch.checkIfValidThenExecute(...tokens);
-      } else if(command === 'clear') {
-        clear.checkIfValidThenExecute();
-      } else if(command === 'help') {
-        help.checkIfValidThenExecute();
+      } else if(command.startsWith("clear") || command === 'clear') {
+        clear.checkIfValidThenExecute(...tokens);
+      } else if(command.startsWith("help ") || command === 'help') {
+        help.checkIfValidThenExecute(...tokens);
       } 
       else if (command === '' || command.startsWith('./')) {
           //TODO: with ./ command check if binary in current directory

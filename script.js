@@ -1,25 +1,55 @@
-let terminalText = document.getElementById("terminal-text");
-var i = 0;
-var index = 0;
-
-let emailDetails = {
-  senderName: "",
-  subject: "",
-  body: "",
-};
-
-const terminal = new Terminal([]);
-const ls = new ListCommand(terminal, "ls", "ls command description", [0, 1]);
-const cat = new CatCommand(terminal, "cat", "cat command description", [1]);
-const cd = new ChangeDirectoryCommand(terminal, "cd", "cd command description", [1]);
-const pwd = new PresentWorkingDirectoryCommand(terminal, "pwd", "pwd description", [0]);
-const mkdir = new MakeDirectoryCommand(terminal, "mkdir", "mkdir command description", [1]);
-const touch = new TouchElementCommand(terminal, "touch", "touch command description", [1]);
-const clear = new ClearCommand(terminal, "clear", "clear command description", [0]);
+const terminal = new Terminal();
+const ls = new ListCommand(
+  terminal,
+  "ls",
+  "List contents of directory. Type 'ls' to list contents of current directory or 'ls <DIRECTORY_NAME>' to list contents of a specific directory.",
+  [0, 1]
+);
+const cat = new CatCommand(
+  terminal,
+  "cat",
+  "Use 'cat <FILE_NAME>' to view contents of a file.",
+  [1]
+);
+const cd = new ChangeDirectoryCommand(
+  terminal,
+  "cd",
+  "Use 'cd <DIRECTORY_NAME>' to change the current directory to a specific directory.",
+  [1]
+);
+const pwd = new PresentWorkingDirectoryCommand(
+  terminal,
+  "pwd",
+  "Use 'pwd' to know the present working directory.",
+  [0]
+);
+const mkdir = new MakeDirectoryCommand(
+  terminal,
+  "mkdir",
+  "Use 'mkdir <DIRECTORY_NAME>' to create a new directory.",
+  [1]
+);
+const touch = new TouchElementCommand(
+  terminal,
+  "touch",
+  "Use 'touch <FILE_NAME>' to create a new file.",
+  [1]
+);
+const clear = new ClearCommand(
+  terminal,
+  "clear",
+  "Use 'clear' to clear the terminal.",
+  [0]
+);
 
 const commands = [ls, cat, cd, pwd, mkdir, touch, clear];
-const help = new HelpCommand(terminal, "help", "help command description", [0, 1], commands);
-
+const help = new HelpCommand(
+  terminal,
+  "help",
+  "help command",
+  [0, 1],
+  commands
+);
 
 $(document).ready(() => {
   document
