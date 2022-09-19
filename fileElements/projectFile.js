@@ -45,7 +45,7 @@ class ProjectFile extends SimpleFile {
               </div>
             </div>
             <p class="project-desc">${this.contents}</p>
-            <iframe width="100%" height="315"
+            <iframe width="100%" height="315" allowfullscreen
                 src="${this.youtubeLink}">
             </iframe>
             <p>Tech stack:</p>
