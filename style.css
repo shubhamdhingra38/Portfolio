@@ -388,6 +388,9 @@ input {
     justify-content: center;
     align-content: center;
   }
+  .infofetch {
+    display: block;
+  }
 }
 
 .github-link {
