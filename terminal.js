@@ -136,6 +136,6 @@ class Terminal {
   }
 
   showError(errorMessage) {
-    this.terminal.append(`<pre class='error-terminal'>${errorMessage}</pre>`);
+    this.terminal.append(`<div class='error-terminal'>${errorMessage}</div>`);
   }
 }
