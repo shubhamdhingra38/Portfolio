@@ -71,13 +71,13 @@ $(document).ready(() => {
     .addEventListener("keyup", inputKeyUp);
   document.getElementById("terminal-text-active").focus();
 
+  const ip = userip || null
   setTimeout(() => {
-    const ip = getUserIp()
     terminal.setUserIp(ip)
     terminal.addTextToLine(`ssh -i key.pem ${INFO['firstName'].toLowerCase()}@${ip || "anonymous"}`)
     terminal.renderCommandAndGoToNextLine()
     terminal.createNextCursor()
-  }, 10)
+  }, 750)
 });
 
 
