@@ -107,6 +107,17 @@ p > a {
   }
 }
 
+.linkedin-link {
+  color: rgb(6, 156, 226);
+  text-shadow: none;
+  font-family: "Source Code Pro", monospace;
+}
+
+.highlighted-text {
+  color: #ffff66;
+  font-family: "Source Code Pro", monospace;
+}
+
 .top {
   display: flex;
   flex-wrap: wrap;
@@ -311,28 +322,6 @@ input {
 .video-showcase {
   display: none;
 }
-
-/* .prev-btn,
-.next-btn {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 16px;
-  height: 50px;
-  color: rgb(0, 255, 42);
-  width: 100px;
-  font-size: large;
-  background: rgba(34, 34, 32, 0.925);
-  outline: none;
-  border: 2px solid green;
-  border-radius: 5px;
-}
-.prev-btn:hover,
-.next-btn:hover {
-  transform: scale(1.1, 1.1);
-  background: black;
-  border: 2px dashed green;
-} */
 
 @media only screen and (min-width: 768px) {
   .pre-name {

@@ -35,12 +35,12 @@ const INFO = {
  * Personal projects
  */
 const quickGraderProject = new Directory("QuickGrader/");
-quickGraderProject.addElement(new SimpleFile("info.txt", `Info about project`));
+quickGraderProject.addElement(new SimpleFile("info.txt", `Uses NLP for making the process of grading short answer quizzes in a largely automated fashion. Also includes plagiarism detection.`));
 quickGraderProject.addElement(
   new ProjectFile(
     "quickGrader.bin",
     (contents =
-      "Uses NLP for making the process of grading short answer quizzes in a largely automated fashion. Also includes plagiarism detection."),
+      "Uses <span class='highlighted-text'>NLP</span> for making the process of <span class='highlighted-text'>grading short answer quizzes</span> in a largely automated fashion. Also includes <span class='highlighted-text'>plagiarism detection</span>."),
     (projectTitle = "Quick Grader"),
     (projectTags = [
       "Django",
@@ -56,13 +56,13 @@ quickGraderProject.addElement(
 
 const visualAlgorithmsProject = new Directory("VisualAlgorithms/");
 visualAlgorithmsProject.addElement(
-  new SimpleFile("info.txt", `Info about project`)
+  new SimpleFile("info.txt", `This project provides an intuitive view of how algorithms works, which is by visualizing them and looking at what operations are performed at every step.`)
 );
 visualAlgorithmsProject.addElement(
   new ProjectFile(
     "visualAlgorithms.bin",
     (contents =
-      "This project provides an intuitive view of how algorithms works, which is by visualizing them and looking at what operations are performed at every step."),
+      "This project provides an intuitive view of how <span class='highlighted-text'>algorithms</span> works, which is by visualizing them and looking at what operations are performed at every step."),
     (projectTitle = "Visual Algorithms"),
     (projectTags = ["HTML/CSS", "JavaScript", "p5.js", "Bootstrap"]),
     (projectYoutubeLink = "https://www.youtube.com/embed/6L2p9XwU7K0"),
@@ -75,13 +75,13 @@ const collaborativeCodeEditingProject = new Directory(
   "Collaborative_Code_Editing/"
 );
 collaborativeCodeEditingProject.addElement(
-  new SimpleFile("info.txt", `Info about project`)
+  new SimpleFile("info.txt", `A web application which uses sockets to enable real-time code sharing, chatting and canvas sketching all at once.`)
 );
 collaborativeCodeEditingProject.addElement(
   new ProjectFile(
     "collabCodeEditing.bin",
     (contents =
-      "A web application which uses sockets to enable real-time code sharing, chatting and canvas sketching all at once."),
+      "A web application which uses <span class='highlighted-text'>sockets</span> to enable real-time code sharing, chatting and canvas sketching all at once."),
     (projectTitle = "Collaborative Code Editing"),
     (projectTags = [
       "Django",
@@ -97,12 +97,12 @@ collaborativeCodeEditingProject.addElement(
 );
 
 const qFictionProject = new Directory("QFiction");
-qFictionProject.addElement(new SimpleFile("info.txt", `Info about project`));
+qFictionProject.addElement(new SimpleFile("info.txt", `Used a pre-trained BERT model on SQuAD and performed fine-tuning on several fiction novels corpus. It allows searching for an answer to a given question in the reference text.`));
 qFictionProject.addElement(
   new ProjectFile(
     "qFiction.bin",
     (contents =
-      "Used a pre-trained BERT model on SQuAD and performed fine-tuning on several fiction novels corpus. It allows searching for an answer to a given question in the reference text."),
+      "Used a pre-trained <span class='highlighted-text'>BERT model on SQuAD</span> and performed fine-tuning on several fiction novels corpus. It allows <span class='highlighted-text'>searching for an answer to a given question</span> in the reference text."),
     (projectTitle = "QFiction"),
     (projectTags = ["HTML/CSS", "Bootstrap", "Python", "Flask", "NLP"]),
     (projectYoutubeLink = "https://www.youtube.com/embed/N6OQ2bsTO2c"),
@@ -129,14 +129,14 @@ contactDirectory.addElement(
   new LinkFile(
     "linkedin.txt",
     `You can reach out to me on LinkedIn, feel free to send a connection request and join my 🕸️ network.
-My LinkedIn is: ${INFO.linkedinLink}. Don't worry, opened this for you in a new tab 🙌!`,
+My LinkedIn is: <span class='linkedin-link'>${INFO.linkedinLink}.</span> Don't worry, opened this for you in a new tab 🙌!`,
     INFO.linkedinLink
   )
 );
 contactDirectory.addElement(
   new SimpleFile(
     "email.txt",
-    'Email me at: `dhingra.shubham38@gmail.com`'
+    'Email me at: <span class="highlighted-text">dhingra.shubham38@gmail.com</span>'
   )
 )
 
