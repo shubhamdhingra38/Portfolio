@@ -11,7 +11,7 @@ function inputKeyUp(event) {
 function getUserIp() {
   const xmlhttp = new XMLHttpRequest()
 
-  xmlhttp.open("GET", "http://api.hostip.info/get_html.php", false)
+  xmlhttp.open("GET", "https://api.hostip.info/get_html.php", false)
   xmlhttp.send()
 
   hostipInfo = xmlhttp.responseText.split("\n")
